@@ -45,9 +45,9 @@ function Signup() {
         <>
             <div style={{ minHeight: "calc( 100vh - 60px )" }} className="animate__animated animate__flipInY w-full  flex justify-center items-center">
                 <div style={{ maxHeight: "calc( 100vh - 60px )" }} className="max-w-md w-full bg-white rounded-xl shadow-2xl overflow-y-auto Custom_Scroll p-5 space-y-8">
-                    <h2 className="text-center text-4xl font-extrabold text-black">
+                    {/* <h2 className="text-center text-4xl font-extrabold text-black">
                         Welcome
-                    </h2>
+                    </h2> */}
                     <p style={{ animation: 'appear 3s ease-out' }} className="text-center text-gray-800">
                         Sign up your new account
                     </p>

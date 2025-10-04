@@ -56,7 +56,7 @@ export const questions = [
         id: 1,
         question: " Which of the following application makes use of a circular linked list?",
         options: [
-            ' Recursive function calls',
+            'Recursive function calls',
             'Undo operation in a text editor',
             'Implement Hash Tables',
             'Allocating CPU to resources'
@@ -76,10 +76,10 @@ export const questions = [
         id: 3,
         question: " Which of the following data structures can be used for parentheses matching?",
         options: [
-            ' n-ary tree',
-            'queue',
-            ' priority queue',
-            'stack'
+            'N-ary tree',
+            'Queue',
+            'Priority queue',
+            'Stack'
         ]
     },
     {
@@ -87,7 +87,7 @@ export const questions = [
         question: " Which of the following is also known as Rope data structure?",
         options: [
             'Linked List',
-            ' Array',
+            'Array',
             'String',
             'Cord'
         ]
@@ -96,10 +96,10 @@ export const questions = [
         id: 5,
         question: " What is an AVL tree?",
         options: [
-            'a tree which is unbalanced and is a height balanced tree',
-            'a tree which is balanced and is a height balanced tree',
-            ' a tree with atmost 3 children',
-            'a tree with three children'
+            'A tree which is unbalanced and is a height balanced tree',
+            'A tree which is balanced and is a height balanced tree',
+            'A tree with atmost 3 children',
+            'A tree with three children'
         ]
     },
     {
@@ -110,7 +110,7 @@ export const questions = [
             '4 and 2',
             '2 and 4',
             '5 and 3',
-            ' 3 and 5'
+            '3 and 5'
         ]
     }
 ];

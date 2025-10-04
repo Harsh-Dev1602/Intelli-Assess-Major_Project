@@ -94,7 +94,7 @@ function StudentExam() {
     } else toast.error("Select an option!");
   };
 
-  // ✅ Render pre-exam camera setup
+
   if (!cameraReady) {
     return (
       <div className="w-[90%] sm:w-130 text-center absolute bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6">
@@ -113,20 +113,37 @@ function StudentExam() {
     );
   }
 
-  // ✅ Render finished exam
+
+   // ✅ Render finished exam
   if (finished) {
     const percentage = (score / questions.length) * 100;
     const status = percentage >= 40 ? "✅ Passed" : "❌ Failed";
+          
+    const saveData = () =>{
+      if(status!== "✅ Passed") return;
+      axios.post("oes-api/user/results", {
+        score,
+        total: questions.length,
+        percentage,
+        status,
+        user: authUser.user.fullname, 
+      }).then( console.log("Go dashboard")).catch((err) => {
+          console.log("Error saving result:", err)
+        })
+    }
+
+  
     return (
       <div className="w-[90%] sm:w-130 text-center absolute bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6 flex justify-center items-center flex-col gap-1">
         <h2 className="text-2xl font-bold "><span className="Text_Color">Exam Finished</span>  🎉</h2>
         <p className="  text-black font-semibold rounded-xl ">Your Score: {score}/{questions.length}</p>
         <p className="  text-black font-semibold rounded-xl "> Percentage: {percentage.toFixed(2)}% </p>
         <p className={`p-1  text-white font-semibold rounded-xl ${percentage >= 40 ? "bg-green-600" : "bg-red-600"}`} > {status}</p>
-        <Link to="/dashboard" className="BG_Color p-2 text-white font-bold rounded-xl"> Go dashboard</Link>
+        <Link onClick={saveData} to="/dashboard" className="BG_Color p-2 text-white font-bold rounded-xl"> Go dashboard</Link>
       </div>
     );
   }
+
   return (
     <>
       <div className=" w-full bg-white rounded-xl absolute  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 select-none p-6 lg:max-w-lg mx-auto flex justify-center items-start flex-col gap-4 Custom_Scroll overflow-y-auto">

@@ -1,10 +1,64 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { BsYoutube } from "react-icons/bs";
+import { FaSquareFacebook } from "react-icons/fa6";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
 
 function Footer() {
+    const NavText = [
+        {
+            id: 0,
+            text: "Home",
+            link: "/"
+        }, {
+            id: 1,
+            text: "About us",
+        }, {
+            id: 2,
+            text: "Contect us",
+        },
+    ]
+    const Icon = [
+        {
+            id: 0,
+            icon: <FaSquareFacebook />,
+        },
+        {
+            id: 1,
+            icon: <FaSquareInstagram />,
+        },
+        {
+            id: 2,
+            icon: <FaGithub />,
+        },
+        {
+            id: 3,
+            icon: <BsYoutube />,
+        },
+    ]
     return (
         <>
-            <div className="w-full h-50 font-bold mt-2 flex justify-center items-center  text-5xl bg-gray-800 ">
-                <span className='Text_Color border-2 border-amber-50 p-1 rounded-xl'>Footer</span>
+            <div className="w-full rounded-t-xl h-100 lg:h-70 font-bold mt-2 flex flex-col lg:flex-row justify-evenly items-center bg-gray-800 ">
+                <div className="text-white text-center">© 2025 Intelli Assess. All Rights Reserved.</div>
+                <ul className='flex flex-col w-[80%] lg:w-auto  items-center justify-center border-2 border-transparent border-y-white lg:border-y-transparent lg:border-x-white p-5 lg:px-20'>
+                    {
+                        NavText.map(({ id, text, link }) => (
+                            <Link to={link} key={id} className='text-white hover:text-indigo-500 hover:underline transition-all font-bold p-1 rounded-xl cursor-pointer'>{text}</Link>
+                        ))
+                    }
+                </ul>
+
+                <div className="Box_Shedow p-4 rounded-xl flex justify-center items-center flex-col gap-2">
+                    <h3 className="text-white font-bold ">FOLLOW US</h3>
+                    <ul className=" flex  justify-center items-center gap-5">
+                        {
+                            Icon.map(({ id, icon }) => (
+                                <li key={id} className="text-black bg-white cursor-pointer duration-200 hover:bg-[#fff4f4c1] rounded-xl p-2 text-2xl">{icon}</li>
+                            ))
+                        }
+                    </ul>
+                </div>
             </div>
         </>
     )

@@ -1,8 +1,26 @@
-import { Link } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 import { useAuth } from "../Context/AuthProvider";
+import axios from 'axios';
+import toast from 'react-hot-toast'
 
 function Dashboard() {
   const [authUser, setAuthUser] = useAuth();
+  const navigate = useNavigate();
+  
+  const handleStartExam = async () => {
+  try {
+    const res = await axios.get(`/oes-api/user/results/check/${authUser.user.fullname}`);
+    
+    if (res.data.taken === true) {
+      toast.error("You have already pass this exam!");
+    } else {
+      navigate("/start-exam");
+    }
+  } catch (err) {
+    toast.error("Error checking exam status");
+    console.error(err);
+  }
+};
 
   return (
     <>
@@ -19,7 +37,7 @@ function Dashboard() {
             </ol>
 
             <div className='text-center p-5 '>
-              <Link to="/start-exam" className='px-5 py-2 BG_Color rounded-xl font-semibold text-white' >Start Exam</Link>
+              <button  onClick={handleStartExam} className='px-5 py-2 BG_Color rounded-xl font-semibold cursor-pointer text-white' >Start Exam</button>
             </div>
 
           </div>

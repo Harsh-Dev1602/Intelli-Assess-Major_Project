@@ -9,6 +9,7 @@ import Signup from './Com/Signup'
 import Dashboard from './Com/Dashboard';
 import StudentExam from './Com/StudentExam.jsx';
 import { useAuth } from "./Context/AuthProvider.jsx";
+import Footer from './Com/Footer.jsx';
 
 
 function App() {
@@ -23,19 +24,23 @@ function App() {
             <Route path="/login" element={authUser ? <Navigate to="/dashboard" /> : <Login />} />
             <Route path="/signup" element={authUser ? <Navigate to="/dashboard" /> : <Signup />} />
             <Route path="/dashboard" element={authUser ? <Dashboard /> : <Navigate to="/" />} />
-             <Route path="/start-exam" element={authUser ?   <StudentExam/> : <Navigate to="/" />} />
-           
+            <Route path="/start-exam" element={authUser ? <StudentExam /> : <Navigate to="/" />} />
+
           </Routes>
+          <div className={`${authUser ? "hidden" : "block"}`}>
+            <Footer />
+          </div>
         </div>
         <Toaster
           position="bottom-right"
           reverseOrder={false}
           toastOptions={{
             style: {
-              border: 'none',
               fontSize: '20px',
               fontWeight: "700",
+              borderRadius: "12px",
               color: "#4f39f6",
+              border: "solid 2px #4f39f6",
               backgroundColor: "white"
             },
             iconTheme: {
