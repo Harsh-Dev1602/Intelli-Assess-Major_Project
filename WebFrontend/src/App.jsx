@@ -8,12 +8,15 @@ import Login from './Com/Login'
 import Signup from './Com/Signup'
 import Dashboard from './Com/Dashboard';
 import StudentExam from './Com/StudentExam.jsx';
+import AdminDashboard from './Com/AdminDashboard.jsx';
+import AllLoginStudentData from './Com/allLoginStudentData.jsx';
 import { useAuth } from "./Context/AuthProvider.jsx";
 import Footer from './Com/Footer.jsx';
 
 
 function App() {
   const [authUser, setAuthUser] = useAuth();
+
   return (
     <>
       <div className="w-full h-screen BG_Color Custom_Scroll overflow-y-auto">
@@ -23,13 +26,12 @@ function App() {
             <Route path="/" element={authUser ? <Navigate to="/dashboard" /> : <Home />} />
             <Route path="/login" element={authUser ? <Navigate to="/dashboard" /> : <Login />} />
             <Route path="/signup" element={authUser ? <Navigate to="/dashboard" /> : <Signup />} />
-            <Route path="/dashboard" element={authUser ? <Dashboard /> : <Navigate to="/" />} />
+            <Route path="/dashboard" element={authUser ? ( authUser?.user?.role === "@dmin" ? <Navigate to="/admin-dashboard" /> : <Dashboard />) : ( <Navigate to="/" /> )} />
             <Route path="/start-exam" element={authUser ? <StudentExam /> : <Navigate to="/" />} />
-
+            <Route path="/admin-dashboard" element={authUser?.user?.role === "@dmin" ? <AdminDashboard /> : <Navigate to="/" />} />
+            <Route path="/allStudetData" element={authUser?.user?.role === "@dmin" ? <AllLoginStudentData /> : <Navigate to="/" />} />
+            <Route path="*" element={authUser ? <Dashboard /> : <Navigate to="/" />} />
           </Routes>
-          <div className={`${authUser ? "hidden" : "block"}`}>
-            <Footer />
-          </div>
         </div>
         <Toaster
           position="bottom-right"

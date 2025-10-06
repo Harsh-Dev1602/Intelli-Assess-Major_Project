@@ -12,7 +12,7 @@ function Dashboard() {
     const res = await axios.get(`/oes-api/user/results/check/${authUser.user.fullname}`);
     
     if (res.data.taken === true) {
-      toast.error("You have already pass this exam!");
+      toast.error("You have already completed this exam!");
     } else {
       navigate("/start-exam");
     }

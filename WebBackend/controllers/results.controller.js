@@ -10,7 +10,7 @@ export const results = async (req, res) => {
   }
 }
 
-export const checkResults =  async (req, res) => {
+export const checkResults = async (req, res) => {
   try {
     const { user } = req.params;
     const existing = await Result.findOne({ user: user });
@@ -20,5 +20,17 @@ export const checkResults =  async (req, res) => {
     res.json({ taken: false });
   } catch (err) {
     res.status(500).json({ error: "Server error" });
+  }
+}
+
+export const allStudentList = async (req, res) => {
+  try {
+    const results = await Result.find()
+      .populate("user")
+      .sort({ createdAt: -1 });
+
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch results", details: err.message });
   }
 }

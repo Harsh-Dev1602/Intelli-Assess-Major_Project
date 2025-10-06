@@ -73,3 +73,15 @@ export const logout = async (req, res) => {
     res.status(500).json({ error: "User not log out.. " });
   }
 };
+
+
+export const allStudetData = async (req,res) =>{
+   try {
+    const data = await User.find({}, "fullname email createdAt").sort({ loginTime: -1 });
+    
+    res.status(200).json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error fetching login history" });
+  }
+}

@@ -114,25 +114,25 @@ function StudentExam() {
   }
 
 
-   // ✅ Render finished exam
+  // ✅ Render finished exam
   if (finished) {
     const percentage = (score / questions.length) * 100;
     const status = percentage >= 40 ? "✅ Passed" : "❌ Failed";
-          
-    const saveData = () =>{
-      if(status!== "✅ Passed") return;
+
+    const saveData = () => {
+      if (status !== "✅ Passed") return;
       axios.post("oes-api/user/results", {
         score,
         total: questions.length,
         percentage,
         status,
-        user: authUser.user.fullname, 
-      }).then( console.log("Go dashboard")).catch((err) => {
-          console.log("Error saving result:", err)
-        })
+        user: authUser.user.fullname,
+      }).then(console.log("Go dashboard")).catch((err) => {
+        console.log("Error saving result:", err)
+      })
     }
 
-  
+
     return (
       <div className="w-[90%] sm:w-130 text-center absolute bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6 flex justify-center items-center flex-col gap-1">
         <h2 className="text-2xl font-bold "><span className="Text_Color">Exam Finished</span>  🎉</h2>
