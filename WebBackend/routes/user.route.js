@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { register , login , logout, allStudetData } from "../controllers/user.controller.js";
+import { register , login , logout, allStudentData } from "../controllers/user.controller.js";
 import {allques, allans} from '../controllers/question.controller.js';
 import { results , checkResults,allStudentList} from '../controllers/results.controller.js';
 
@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/register", register)
 router.post("/login", login)
 router.post("/logout", logout)
-router.get("/allStudetData",allStudetData)
+router.get("/allStudentData",allStudentData)
 
 // All Ques and ans API
 router.get("/questions",allques)

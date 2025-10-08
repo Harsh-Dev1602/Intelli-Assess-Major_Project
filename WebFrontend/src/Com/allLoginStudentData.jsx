@@ -11,7 +11,7 @@ function allLoginStudentData() {
   useEffect(() => {
     const fetchLoginData = async () => {
       try {
-        const res = await axios.get("/oes-api/user/allStudetData");
+        const res = await axios.get("/oes-api/user/allStudentData");
         setLoginData(res.data);
       } catch (err) {
         console.error("Error fetching login data:", err);

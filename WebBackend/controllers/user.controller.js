@@ -75,7 +75,7 @@ export const logout = async (req, res) => {
 };
 
 
-export const allStudetData = async (req,res) =>{
+export const allStudentData = async (req,res) =>{
    try {
     const data = await User.find({}, "fullname email createdAt").sort({ loginTime: -1 });
     

@@ -1,6 +1,7 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
 import 'animate.css';
 import { Toaster } from 'react-hot-toast'
+import { useEffect, useState } from 'react';
 
 import Navbar from './Com/Navbar'
 import Home from './Com/Home'
@@ -11,27 +12,39 @@ import StudentExam from './Com/StudentExam.jsx';
 import AdminDashboard from './Com/AdminDashboard.jsx';
 import AllLoginStudentData from './Com/allLoginStudentData.jsx';
 import { useAuth } from "./Context/AuthProvider.jsx";
-import Footer from './Com/Footer.jsx';
+import Loading from './Com/Loading/Loading.jsx';
 
 
 function App() {
   const [authUser, setAuthUser] = useAuth();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   return (
     <>
       <div className="w-full h-screen BG_Color Custom_Scroll overflow-y-auto">
         <div className='w-[95%] mx-auto  min-[1700px]:w-[70%] min-[3500px]:w-[40%]'>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={authUser ? <Navigate to="/dashboard" /> : <Home />} />
-            <Route path="/login" element={authUser ? <Navigate to="/dashboard" /> : <Login />} />
-            <Route path="/signup" element={authUser ? <Navigate to="/dashboard" /> : <Signup />} />
-            <Route path="/dashboard" element={authUser ? ( authUser?.user?.role === "@dmin" ? <Navigate to="/admin-dashboard" /> : <Dashboard />) : ( <Navigate to="/" /> )} />
-            <Route path="/start-exam" element={authUser ? <StudentExam /> : <Navigate to="/" />} />
-            <Route path="/admin-dashboard" element={authUser?.user?.role === "@dmin" ? <AdminDashboard /> : <Navigate to="/" />} />
-            <Route path="/allStudetData" element={authUser?.user?.role === "@dmin" ? <AllLoginStudentData /> : <Navigate to="/" />} />
-            <Route path="*" element={authUser ? <Dashboard /> : <Navigate to="/" />} />
-          </Routes>
+          {loading ? (
+            <Loading />
+          ) : (<>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={authUser ? <Navigate to="/dashboard" /> : <Home />} />
+              <Route path="/login" element={authUser ? <Navigate to="/dashboard" /> : <Login />} />
+              <Route path="/signup" element={authUser ? <Navigate to="/dashboard" /> : <Signup />} />
+              <Route path="/dashboard" element={authUser ? (authUser?.user?.role === "@dmin" ? <Navigate to="/admin-dashboard" /> : <Dashboard />) : (<Navigate to="/" />)} />
+              <Route path="/start-exam" element={authUser ? <StudentExam /> : <Navigate to="/" />} />
+              <Route path="/admin-dashboard" element={authUser?.user?.role === "@dmin" ? <AdminDashboard /> : <Navigate to="/" />} />
+              <Route path="/all-student" element={authUser?.user?.role === "@dmin" ? <AllLoginStudentData /> : <Navigate to="/" />} />
+              <Route path="*" element={authUser ? <Dashboard /> : <Navigate to="/" />} />
+            </Routes>
+          </>
+          )}
         </div>
         <Toaster
           position="bottom-right"
