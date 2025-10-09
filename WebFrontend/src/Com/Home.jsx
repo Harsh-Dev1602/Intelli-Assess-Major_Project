@@ -3,6 +3,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import Img3 from '../../public/Bg_Img/Bg_Img3.jpg'
+import Img5 from '../../public/Bg_Img/Bg_Img5.jpg'
+
 import Footer from './Footer';
 
 function Home() {
@@ -41,8 +44,15 @@ function Home() {
                     ))
                     }
                 </Slider>
+
             </div>
-            <Footer/>
+            <div className="my-5">
+                <img src={Img3} className=' rounded-xl'/>
+            </div>
+            <div className="my-5">
+                <img src={Img5} className=' rounded-xl'/>
+            </div>
+            <Footer />
         </>
     )
 }

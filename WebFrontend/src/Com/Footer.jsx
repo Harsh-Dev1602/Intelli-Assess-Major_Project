@@ -26,19 +26,23 @@ function Footer() {
     const Icon = [
         {
             id: 0,
-            icon: <FaSquareFacebook />,
+            icon: <FaGithub />,
+            link:"https://github.com/Harsh-Dev1602/Intelli-Assess-Major_Project"
         },
         {
             id: 1,
-            icon: <FaSquareInstagram />,
+            icon: <FaSquareFacebook />,
+            link:"https://www.facebook.com/"
         },
         {
             id: 2,
-            icon: <FaGithub />,
+            icon: <FaSquareInstagram />,
+            link:"https://www.instagram.com/"
         },
         {
             id: 3,
             icon: <BsYoutube />,
+            link:"https://www.youtube.com/"
         },
     ]
     return (
@@ -57,8 +61,10 @@ function Footer() {
                     <h3 className="text-white font-bold ">FOLLOW US</h3>
                     <ul className=" flex  justify-center items-center gap-5">
                         {
-                            Icon.map(({ id, icon }) => (
-                                <li key={id} className="text-black bg-white cursor-pointer duration-200 hover:bg-[#fff4f4c1] rounded-xl p-2 text-2xl">{icon}</li>
+                            Icon.map(({ id, icon,link }) => (
+                                <Link to={link} key={id}>
+                                <li  className="text-black bg-white cursor-pointer duration-200 hover:bg-[#fff4f4c1] rounded-xl p-2 text-2xl">{icon}</li>
+                                </Link>
                             ))
                         }
                     </ul>
