@@ -1,5 +1,5 @@
 import { useNavigate  } from 'react-router-dom';
-import { useAuth } from "../Context/AuthProvider";
+import { useAuth } from "../../Context/AuthProvider";
 import axios from 'axios';
 import toast from 'react-hot-toast'
 
@@ -42,7 +42,7 @@ function Dashboard() {
 
           </div>
         </div>
-          <span className='text-red-600 mt-5 text-center rounded-xl bg-white font-bold p-1'>*⚠️ Important: Read all instructions carefully before starting. Not following the rules may result in automatic submission or termination of the exam.*</span>
+          <span className='text-red-600 mt-5 text-center rounded-xl bg-white font-bold p-1'>Important: Read all instructions carefully before starting. Not following the rules may result in automatic submission or termination of the exam.</span>
 
       </div>
     </>

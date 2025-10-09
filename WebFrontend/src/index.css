@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.Font_Text{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .Box_Shedow {
   box-shadow: 1px 1px 5px #312c85;
 }

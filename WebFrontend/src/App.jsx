@@ -4,13 +4,15 @@ import { Toaster } from 'react-hot-toast'
 import { useEffect, useState } from 'react';
 
 import Navbar from './Com/Navbar'
+import About from './Com/About.jsx'
+import Contect from './Com/Contect.jsx'
 import Home from './Com/Home'
 import Login from './Com/Login'
 import Signup from './Com/Signup'
-import Dashboard from './Com/Dashboard';
-import StudentExam from './Com/StudentExam.jsx';
-import AdminDashboard from './Com/AdminDashboard.jsx';
-import AllLoginStudentData from './Com/allLoginStudentData.jsx';
+import Dashboard from './Com/Dashboard/Dashboard.jsx';
+import StudentExam from './Com/Dashboard/StudentExam.jsx';
+import AdminDashboard from './Com/AdminDashboard/AdminDashboard.jsx';
+import AllLoginStudentData from './Com/AdminDashboard/allLoginStudentData.jsx';
 import { useAuth } from "./Context/AuthProvider.jsx";
 import Loading from './Com/Loading/Loading.jsx';
 
@@ -27,7 +29,7 @@ function App() {
 
   return (
     <>
-      <div className="w-full h-screen BG_Color Custom_Scroll overflow-y-auto">
+      <div className="w-full Font_Text h-screen BG_Color Custom_Scroll overflow-y-auto">
         <div className='w-[95%] mx-auto  min-[1700px]:w-[70%] min-[3500px]:w-[40%]'>
           {loading ? (
             <Loading />
@@ -35,6 +37,8 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={authUser ? <Navigate to="/dashboard" /> : <Home />} />
+              <Route path='/about'  element={<About/>}/>
+              <Route path='/contect' element={<Contect/>}/>
               <Route path="/login" element={authUser ? <Navigate to="/dashboard" /> : <Login />} />
               <Route path="/signup" element={authUser ? <Navigate to="/dashboard" /> : <Signup />} />
               <Route path="/dashboard" element={authUser ? (authUser?.user?.role === "@dmin" ? <Navigate to="/admin-dashboard" /> : <Dashboard />) : (<Navigate to="/" />)} />

@@ -13,7 +13,7 @@ function Navbar() {
             items-center ">
                 <Link to="/" className='flex justify-center items-center'>
                     <img src={logo} className='w-5 min-[375px]:w-15'/>
-                    <h2 className='Text_Color font-bold'>Intelli Assess</h2>
+                    <h2 className=' Text_Color font-bold'>Intelli Assess</h2>
                 </Link>
 
                 <div className={`${authUser ? "hidden" : " "} font-bold rounded-xl  flex gap-2`}>

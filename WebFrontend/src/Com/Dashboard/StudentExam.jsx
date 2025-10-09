@@ -4,7 +4,7 @@ import axios from "axios";
 import { MdPermCameraMic } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-import { useAuth } from "../Context/AuthProvider.jsx";
+import { useAuth } from "../../Context/AuthProvider.jsx";
 
 function StudentExam() {
   const [authUser, setAuthUser] = useAuth();
@@ -136,9 +136,9 @@ function StudentExam() {
     return (
       <div className="w-[90%] sm:w-130 text-center absolute bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6 flex justify-center items-center flex-col gap-1">
         <h2 className="text-2xl font-bold "><span className="Text_Color">Exam Finished</span>  🎉</h2>
-        <p className="  text-black font-semibold rounded-xl ">Your Score: {score}/{questions.length}</p>
-        <p className="  text-black font-semibold rounded-xl "> Percentage: {percentage.toFixed(2)}% </p>
-        <p className={`p-1  text-white font-semibold rounded-xl ${percentage >= 40 ? "bg-green-600" : "bg-red-600"}`} > {status}</p>
+        <p>Your Score: {score}/{questions.length}</p>
+        <p> Percentage: {percentage.toFixed(2)}% </p>
+        <p className={`p-2 px-5  text-white font-semibold rounded-xl ${percentage >= 40 ? "bg-green-800" : "bg-red-800"}`} > {status}</p>
         <Link onClick={saveData} to="/dashboard" className="BG_Color p-2 text-white font-bold rounded-xl"> Go dashboard</Link>
       </div>
     );
@@ -146,7 +146,7 @@ function StudentExam() {
 
   return (
     <>
-      <div className=" w-full bg-white rounded-xl absolute  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 select-none p-6 lg:max-w-lg mx-auto flex justify-center items-start flex-col gap-4 Custom_Scroll overflow-y-auto">
+      <div className=" w-[95%] bg-white rounded-xl absolute  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 select-none p-4 lg:max-w-lg mx-auto flex justify-center items-start flex-col gap-4 Custom_Scroll overflow-y-auto">
 
         <h2 className="text-xl font-bold Text_Color">
           Question {currentQ + 1} of {questions.length}
@@ -156,24 +156,28 @@ function StudentExam() {
 
         {questions.length > 0 && (
           <>
-            <p className=" font-semibold">{questions[currentQ].question}</p>
+            <div style={{ minHeight: "300px" }}>
+              <div style={{ maxHeight: "300px" }} className="overflow-y-auto Custom_Scroll">
+                <p className="text-justify">{questions[currentQ].question}</p>
 
-            {questions[currentQ].img && (
-              <img
-                src={questions[currentQ].img}
-                className="w-full h-auto rounded-xl bg-cover object-cover"
-              />
-            )}
+                {questions[currentQ].img && (
+                  <img
+                    src={questions[currentQ].img}
+                    className="w-full h-auto rounded-xl bg-cover my-1 object-cover"
+                  />
+                )}
 
-            {questions[currentQ].options.map((opt, idx) => (
-              <label key={idx} className={`block w-full rounded-xl p-2  cursor-pointer ${selected === idx ? "BG_Color  text-white" : "bg-[#cccccc50]"}`}
-              >
-                <input type="radio" name="option" value={idx} checked={selected === idx} onChange={() => setSelected(idx)} className=" mr-5" />{opt} </label>
-            ))}
+                {questions[currentQ].options.map((opt, idx) => (
+                  <label key={idx} className={`block w-full rounded-xl p-2 my-2 cursor-pointer ${selected === idx ? "BG_Color  text-white" : "bg-[#cccccc50]"}`}
+                  >
+                    <input type="radio" name="option" value={idx} checked={selected === idx} onChange={() => setSelected(idx)} className=" mr-5" />{opt} </label>
+                ))}
 
+              </div>
+            </div>
             <button
               onClick={handleNext}
-              className=" p-1 px-2 cursor-pointer BG_Color text-white rounded"
+              className=" p-1 px-4 cursor-pointer BG_Color text-white rounded"
             >
               {currentQ + 1 === questions.length ? "Finish Exam" : "Next"}
             </button>

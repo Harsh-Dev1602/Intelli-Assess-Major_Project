@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import toast from 'react-hot-toast'
 import axios from 'axios';
+import { MdLogout } from "react-icons/md";
 import { useAuth } from "../Context/AuthProvider";
 
 export default function UserMenu() {
@@ -37,10 +38,10 @@ export default function UserMenu() {
                         <p className="font-bold text-xl text-center text-indigo-900">{authUser.user.fullname}</p>
                         <p className="text-center Text_Color font-bold">{authUser?.user?.role}</p>
                         <button
-                            className="w-full font-semibold cursor-pointer text-md mt-2 bg-red-600 text-white  rounded-md hover:bg-red-700 p-1 transition"
+                            className="w-full font-bold cursor-pointer text-xl mt-2 bg-red-600 text-white flex gap-1 justify-center items-center  rounded-md hover:bg-red-700 p-1 transition"
                            onClick={handleLogout}
                         >
-                            Logout
+                          <MdLogout />  Log out
                         </button>
                     </div>
                     </div>

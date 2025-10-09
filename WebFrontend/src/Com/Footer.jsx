@@ -14,9 +14,13 @@ function Footer() {
         }, {
             id: 1,
             text: "About us",
+            link: "/about"
+
         }, {
             id: 2,
             text: "Contect us",
+            link: "/contect"
+
         },
     ]
     const Icon = [
@@ -44,7 +48,7 @@ function Footer() {
                 <ul className='flex flex-col w-[80%] lg:w-auto  items-center justify-center border-2 border-transparent border-y-white lg:border-y-transparent lg:border-x-white p-5 lg:px-20'>
                     {
                         NavText.map(({ id, text, link }) => (
-                            <Link to={link} key={id} className='text-white hover:text-indigo-500 hover:underline transition-all font-bold p-1 rounded-xl cursor-pointer'>{text}</Link>
+                            <Link to={link} key={id} className='text-white hover:text-indigo-500 hover:underline transition-all duration-500 font-bold  rounded-xl cursor-pointer'>{text}</Link>
                         ))
                     }
                 </ul>

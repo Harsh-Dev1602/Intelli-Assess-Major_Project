@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from 'react-hot-toast'
-import { useAuth } from "../Context/AuthProvider.jsx";
+import { useAuth } from "../../Context/AuthProvider.jsx";
 import { FcTodoList } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
