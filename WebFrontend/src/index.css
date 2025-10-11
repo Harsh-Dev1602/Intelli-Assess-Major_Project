@@ -20,15 +20,17 @@
 
 .Custom_Scroll::-webkit-scrollbar {
   width: 8px;
+  
 }
 
 .Custom_Scroll::-webkit-scrollbar-track {
   background-color: #cccccc65;
+   border-radius: 12px;
 }
 
 .Custom_Scroll::-webkit-scrollbar-thumb {
   background-color: #4f39f6;
-  border-radius: 32px;
+  border-radius: 12px;
 }
 
 .Custom_Scroll::-webkit-scrollbar-thumb:hover {
@@ -59,45 +61,34 @@
 /* Base: Mobile (default) */
 body {
   font-size: 16px;
-  /* text-base */
-  line-height: 1.6;
 }
-
 h1 {
   font-size: 24px;
-  /* text-2xl */
 }
 
 h2 {
   font-size: 20px;
-  /* text-xl */
 }
-
 h3 {
   font-size: 18px;
-  /* text-lg */
 }
 
 /* Tablet (md: ≥768px) */
 @media (min-width: 768px) {
   body {
     font-size: 18px;
-    /* md:text-lg */
   }
 
   h1 {
     font-size: 30px;
-    /* md:text-3xl */
   }
 
   h2 {
     font-size: 24px;
-    /* md:text-2xl */
   }
 
   h3 {
     font-size: 20px;
-    /* md:text-xl */
   }
 }
 
@@ -105,22 +96,18 @@ h3 {
 @media (min-width: 1024px) {
   body {
     font-size: 18px;
-    /* lg:text-lg */
   }
 
   h1 {
     font-size: 36px;
-    /* lg:text-4xl */
   }
 
   h2 {
     font-size: 30px;
-    /* lg:text-3xl */
   }
 
   h3 {
     font-size: 24px;
-    /* lg:text-2xl */
   }
 }
 
@@ -128,21 +115,17 @@ h3 {
 @media (min-width: 1280px) {
   body {
     font-size: 20px;
-    /* xl:text-xl */
   }
 
   h1 {
     font-size: 48px;
-    /* xl:text-5xl */
   }
 
   h2 {
     font-size: 36px;
-    /* xl:text-4xl */
   }
 
   h3 {
     font-size: 30px;
-    /* xl:text-3xl */
   }
 }

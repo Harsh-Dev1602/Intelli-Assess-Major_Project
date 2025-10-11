@@ -44,12 +44,10 @@ function Login() {
     return (
         <>
             <div style={{ minHeight: "calc( 100vh - 60px )" }} className="animate__animated animate__flipInY w-full flex  justify-center items-center">
-                <div  style={{ maxHeight: "calc( 100vh - 60px )" }} className="max-w-md w-full bg-white rounded-xl Custom_Scroll overflow-y-auto p-5 space-y-8">
-                    {/* <h2 className="text-center text-4xl font-extrabold text-black">
-                        Welcome
-                    </h2> */}
+                <div  style={{ maxHeight: "calc( 100vh - 60px )" }} className="max-w-md w-full bg-white rounded-xl Custom_Scroll overflow-y-auto p-5 space-y-1">
+                    <h2 className='Text_Color font-bold text-center'>Welcome Back</h2>
                     <p style={{ animation: 'appear 3s ease-out' }} className="text-center text-gray-800">
-                        Log In to your account
+                        Log in to continue your account
                     </p>
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                         <div className="relative">

@@ -39,7 +39,7 @@ function AdminDashboard() {
                             <th className="p-2 font-bold border-2 border-indigo-200">Percentage</th>
                             <th className="p-2 font-bold border-2 border-indigo-200">Status</th>
                         </tr>
-                        {results.map((r) => (
+                        {results.length > 0 ? (results.map((r) => (
                             <tr key={r._id} className=" hover:bg-indigo-100 transition-all">
                                 <td className="p-2 text-center border-2 border-indigo-200">{r.user}</td>
                                 <td className="p-2 text-center border-2 border-indigo-200"> {new Date(r.createdAt).toLocaleString('en-IN', {
@@ -48,9 +48,18 @@ function AdminDashboard() {
                                 })}</td>
                                 <td className="p-2 text-center border-2 border-indigo-200">{r.score}/{r.total}</td>
                                 <td className="p-2 text-center border-2 border-indigo-200">{r.percentage.toFixed(2)}%</td>
-                                <td className={`p-2 border-indigo-200 text-center border-2 ${r.status==="✅ Passed"?" bg-green-100":"bg-red-100"} `}>{r.status}</td>
+                                <td className={`p-2 border-indigo-200 text-center border-2 ${r.status === "✅ Passed" ? " bg-green-100" : "bg-red-100"} `}>{r.status}</td>
                             </tr>
-                        ))}
+                        ))) : (
+                            <tr>
+                                <td
+                                    colSpan="5"
+                                    className="text-center font-bold p-4 border-2 border-indigo-200 text-indigo-500"
+                                >
+                                    No result data found.
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

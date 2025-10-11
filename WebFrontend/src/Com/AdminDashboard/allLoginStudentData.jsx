@@ -32,18 +32,14 @@ function allLoginStudentData() {
         </h2>
 
         <table className="w-full border border-gray-300">
-          <thead>
+          <tbody>
             <tr className="BG_Color sticky top-0 font-bold text-white">
               <th className="p-2 font-bold border-2 border-indigo-200">Full Name</th>
               <th className="p-2 font-bold border-2 border-indigo-200">Email</th>
               <th className="p-2 font-bold border-2 border-indigo-200"> Date & Time</th>
             </tr>
-          </thead>
-
-          <tbody>
             {loginData.length > 0 ? (
               loginData.map((s) => (
-                <>
                   <tr key={s._id} className="hover:bg-indigo-100 transition-all">
                     <td className="p-2 text-center border-2 border-indigo-200">{s.fullname}</td>
                     <td className="p-2 text-center border-2 border-indigo-200">{s.email}</td>
@@ -54,13 +50,12 @@ function allLoginStudentData() {
                       })}
                     </td>
                   </tr>
-                </>
               ))
             ) : (
               <tr>
                 <td
                   colSpan="3"
-                  className="text-center font-bold p-4 text-indigo-500"
+                  className="text-center border-2 border-indigo-200 font-bold p-4 text-indigo-500"
                 >
                   No login data found.
                 </td>

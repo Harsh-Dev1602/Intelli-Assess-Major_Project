@@ -47,10 +47,10 @@ function Home() {
 
             </div>
             <div className="my-5">
-                <img src={Img3} className=' rounded-xl'/>
+                <img src={Img3} className=' rounded-xl' />
             </div>
             <div className="my-5">
-                <img src={Img5} className=' rounded-xl'/>
+                <img src={Img5} className=' rounded-xl' />
             </div>
             <Footer />
         </>
