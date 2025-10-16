@@ -26,7 +26,7 @@ function AdminDashboard() {
         <>
             <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto bg-indigo-50">
                 <Link to="/all-student">
-                    <button className="BG_Color text-white p-2 rounded-xl font-bold cursor-pointer">List Student</button>
+                    <button className="BG_Color text-white p-2 rounded-xl font-bold cursor-pointer">List of Student</button>
                 </Link>
                 <h2 className="Text_Color text-center font-bold my-4 gap-6 flex justify-center items-center"><FcTodoList /> All Student Results</h2>
 

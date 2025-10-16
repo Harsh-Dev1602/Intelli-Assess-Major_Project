@@ -1,68 +1,136 @@
 import styled from 'styled-components';
 
 function Loading() {
-    return (
-        <div className="w-full h-screen flex justify-center items-center">
-            <StyledWrapper>
-                <div className="loader">
-                    <div className="dot" />
-                    <div className="dot" />
-                    <div className="dot" />
-                    <div className="dot" />
-                    <div className="dot" />
-                </div>
-            </StyledWrapper>
+  return (
+    <div className="w-full h-screen flex justify-center items-center">
+      <StyledWrapper>
+        <div className="liquid-loader">
+          <div className="loading-text">
+            Loading<span className="dot">.</span><span className="dot">.</span><span className="dot">.</span>
+          </div>
+          <div className="loader-track">
+            <div className="liquid-fill" />
+          </div>
         </div>
-    )
+      </StyledWrapper>
+    </div>
+  )
 }
 
 const StyledWrapper = styled.div`
-  .loader {
+  .liquid-loader {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 20px;
   }
 
-  .loader .dot {
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
+  .loader-track {
+    position: relative;
+    width: 180px;
+    height: 32px;
+    background: linear-gradient(to right, #1e2939, #4f39f6, #51a2ff);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.6),
+      0 1px 3px rgba(255, 255, 255, 0.1);
+  }
+
+  .liquid-fill {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: calc(100% - 4px);
     background: white;
-    animation: jump 0.8s ease-in-out infinite alternate;
+    border-radius: 14px;
+    animation:
+      fillProgress 4s ease-out infinite,
+      colorShift 3s linear infinite;
+    box-shadow:
+      0 0 12px rgba(124, 58, 237, 0.4),
+      inset 0 1px 2px rgba(255, 255, 255, 0.2);
   }
 
-  @keyframes jump {
-    25% {
-      background: #ccc;
-      transform: translateY(1rem) translateX(-0rem) scale(0.7);
-    }
-    50% {
-      opacity: 0;
-      transform: translateY(3rem) translateX(-2rem) scale(0.7);
-    }
-    100% {
-      background: #ccc;
-      transform: translateY(-4rem) translateX(0rem) scale(0.2);
-    }
+  .loading-text {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    animation: textGlow 1s ease-in-out infinite;
   }
 
-  .loader .dot:nth-child(1) {
-    animation-delay: 0.1s;
+  .dot {
+    margin-left: 3px;
+    animation: blink 1.5s infinite;
   }
-
-  .loader .dot:nth-child(2) {
-    animation-delay: 0.2s;
+  .dot:nth-of-type(1) {
+    animation-delay: 0s;
   }
-
-  .loader .dot:nth-child(3) {
+  .dot:nth-of-type(2) {
     animation-delay: 0.3s;
   }
-
-  .loader .dot:nth-child(4) {
-    animation-delay: 0.4s;
+  .dot:nth-of-type(3) {
+    animation-delay: 0.6s;
   }
 
-  .loader .dot:nth-child(5) {
-    animation-delay: 0.5s;
+  @keyframes fillProgress {
+    0% {
+      width: 4px;
+    }
+    25% {
+      width: 25%;
+    }
+    50% {
+      width: 50%;
+    }
+    75% {
+      width: 75%;
+    }
+    100% {
+      width: calc(100% - 4px);
+    }
+  }
+
+  @keyframes colorShift {
+    0% {
+      filter: hue-rotate(0deg) brightness(1);
+    }
+    33% {
+      filter: hue-rotate(120deg) brightness(1.1);
+    }
+    66% {
+      filter: hue-rotate(240deg) brightness(0.9);
+    }
+    100% {
+      filter: hue-rotate(360deg) brightness(1);
+    }
+  }
+
+  @keyframes textGlow {
+    0%,
+    100% {
+      opacity: 0.7;
+      text-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
+    }
+    50% {
+      opacity: 1;
+      text-shadow: 0 0 16px rgba(139, 92, 246, 0.6);
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
   }`;
+
 
 export default Loading
 
