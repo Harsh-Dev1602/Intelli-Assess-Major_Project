@@ -1,5 +1,7 @@
 import User from "../models/user.model.js";
 import Admin from "../models/admin.model.js";
+import createTokenAndSaveCookie from "../jwt/generateToken.js";
+
 import bcrypt from "bcrypt";
 //  Register API
 export const register = async (req, res) => {
@@ -19,6 +21,7 @@ export const register = async (req, res) => {
     });
     await newUser.save();
     if (newUser) {
+       createTokenAndSaveCookie(newUser.id, res);
       res.status(201).json({
         message: "User created successfully",
         user: {
@@ -48,6 +51,7 @@ export const login = async (req, res) => {
     else if(!isMatch){
       return res.status(400).json({ error: "Invalid user password" });
     }
+     createTokenAndSaveCookie(user.id, res);
     res.status(201).json({
       message: "User logged in successfully",
       user: {
@@ -67,6 +71,7 @@ export const login = async (req, res) => {
 // Logout API
 export const logout = async (req, res) => {
   try {
+     res.clearCookie("Online_Exam_Key");
     res.status(201).json({ message: "User log out successfully.." });
   } catch (error) {
     console.log(error);

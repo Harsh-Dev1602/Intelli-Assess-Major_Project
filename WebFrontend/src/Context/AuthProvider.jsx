@@ -1,8 +1,9 @@
 import React,  { createContext, useContext, useState } from "react";
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
-  const initialUserState = sessionStorage.getItem("Online_Exam");
+  const initialUserState = Cookies.get("jwt") || sessionStorage.getItem("Online_Exam");
 
 
   const [authUser, setAuthUser] = useState( initialUserState ? JSON.parse(initialUserState) : undefined);

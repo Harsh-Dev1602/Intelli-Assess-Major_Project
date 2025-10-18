@@ -25,7 +25,7 @@ function Footer() {
         }, {
             id: 3,
             text: "Privacy Policy",
-            link: "/"
+            link: "/privacy-policy"
 
         }, {
             id: 4,

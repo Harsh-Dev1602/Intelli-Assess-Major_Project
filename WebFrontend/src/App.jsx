@@ -16,6 +16,7 @@ import AllLoginStudentData from './Com/AdminDashboard/allLoginStudentData.jsx';
 import { useAuth } from "./Context/AuthProvider.jsx";
 import Loading from './Com/Loading/Loading.jsx';
 import SetPaper from './Com/AdminDashboard/SetPaper.jsx';
+import PrivacyPolicy from './Com/PrivacyPolicy.jsx';
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
             <Routes>
               <Route path="/" element={authUser ? <Navigate to="/dashboard" /> : <Home />} />
               <Route path='/about'  element={<About/>}/>
+              <Route path='/privacy-policy'  element={<PrivacyPolicy/>}/>
+
               <Route path='/contect' element={<Contect/>}/>
               <Route path="/login" element={authUser ? <Navigate to="/dashboard" /> : <Login />} />
               <Route path="/signup" element={authUser ? <Navigate to="/dashboard" /> : <Signup />} />

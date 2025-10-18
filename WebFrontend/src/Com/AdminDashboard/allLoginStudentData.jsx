@@ -39,7 +39,7 @@ function allLoginStudentData() {
               <th className="p-2 font-bold border-2 border-indigo-200"> Date & Time</th>
             </tr>
             {loginData.length > 0 ? (
-              loginData.map((s) => (
+              loginData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((s) => (
                   <tr key={s._id} className="hover:bg-indigo-100 transition-all">
                     <td className="p-2 text-center border-2 border-indigo-200">{s.fullname}</td>
                     <td className="p-2 text-center border-2 border-indigo-200">{s.email}</td>

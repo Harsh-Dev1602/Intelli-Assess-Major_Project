@@ -45,7 +45,7 @@ function About() {
           </ul>
         </div>
 
-        <div className="text-black p-1 text-justify flex flex-col lg:flex-row justify-evenly rounded-xl my-5">
+        <div className="text-black p-1 text-justify flex flex-col lg:flex-row justify-evenly rounded-xl my-2">
           <h1 className=' rounded-xl p-1 flex justify-center items-center h-20 font-bold'>Key feature</h1>
           <ul className=' rounded-xl p-5'>
             <li className=' list-disc ml-5'>Flexible question types: MCQ, short answer, essay, coding, image/audio questions.</li>
@@ -60,7 +60,7 @@ function About() {
             <li className=' list-disc ml-5'>Accessibility compliance: keyboard navigation, screen-reader friendly layouts.</li>
           </ul>
         </div>
-        <div className="flex justify-evenly flex-col lg:flex-row items-center gap-5 lg:gap-20 my-5">
+        <div className="flex justify-evenly flex-col lg:flex-row items-center gap-5 lg:gap-20 my-1">
           <div className=' lg:w-1/2 text-center rounded-xl p-10 text-black'>
             <h1 className=' font-bold'>Technology & security</h1>
             <p >Intelli Assess is built with modern, scalable web technologies and follows security best practices: encrypted data in transit and at rest, secure authentication, and comprehensive logging. APIs allow integration with popular LMS and HR systems.</p>

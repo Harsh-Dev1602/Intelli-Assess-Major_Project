@@ -44,7 +44,7 @@ function AdminDashboard() {
                             <th className="p-2 font-bold border-2 border-indigo-200">Percentage</th>
                             <th className="p-2 font-bold border-2 border-indigo-200">Status</th>
                         </tr>
-                        {results.length > 0 ? (results.map((r) => (
+                        {results.length > 0 ? (results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((r) => (
                             <tr key={r._id} className=" hover:bg-indigo-100 transition-all">
                                 <td className="p-2 text-center border-2 border-indigo-200">{r.user}</td>
                                 <td className="p-2 text-center border-2 border-indigo-200"> {new Date(r.createdAt).toLocaleString('en-IN', {
