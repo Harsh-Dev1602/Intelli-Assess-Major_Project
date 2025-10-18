@@ -97,7 +97,7 @@ function StudentExam() {
 
   if (!cameraReady) {
     return (
-      <div className="w-[90%] sm:w-130 text-center absolute bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6">
+      <div className="w-[90%] sm:w-130 text-center absolute Box_Shedow bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6">
         <h2 className="text-xl font-bold Text_Color">Enable Camera & Microphone</h2>
         <video id="examVideo" className="w-0 h-0"></video>
         <div className="w-30 BG_Color my-5 mx-auto p-1 rounded-xl">
@@ -134,7 +134,7 @@ function StudentExam() {
 
 
     return (
-      <div className="w-[90%] sm:w-130 text-center absolute bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6 flex justify-center items-center flex-col gap-1">
+      <div className="w-[90%] sm:w-130 text-center absolute Box_Shedow bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6 flex justify-center items-center flex-col gap-1">
         <h2 className="text-2xl font-bold "><span className="Text_Color">Exam Finished</span>  🎉</h2>
         <p>Your Score: {score}/{questions.length}</p>
         <p> Percentage: {percentage.toFixed(2)}% </p>
@@ -146,7 +146,7 @@ function StudentExam() {
 
   return (
     <>
-      <div className=" w-[95%] bg-white rounded-xl absolute  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 select-none p-4 lg:max-w-lg mx-auto flex justify-center items-start flex-col gap-4 Custom_Scroll overflow-y-auto">
+      <div className=" w-[95%] Box_Shedow bg-white rounded-xl absolute  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 select-none p-4 lg:max-w-lg mx-auto flex justify-center items-start flex-col gap-4 Custom_Scroll overflow-y-auto">
 
         <h2 className="text-xl font-bold Text_Color">
           Question {currentQ + 1} of {questions.length}

@@ -39,8 +39,8 @@ function Contect() {
     <>
       <div style={{ height: "calc( 100vh - 60px )" }} className=' w-full overflow-y-auto  Custom_Scroll'>
         <div className="flex flex-col md:flex-row justify-evenly gap-5 items-center my-5">
-          <img src={Img7} className='w-60 lg:w-70 rounded-xl' />
-          <div className="w-10/12 lg:w-1/2 text-center bg-white rounded-xl p-2">
+          <img src={Img7} className='w-60 lg:w-70 rounded-xl Box_Shedow' />
+          <div className="w-10/12 lg:w-1/2 text-center rounded-xl p-2">
             <h2 className=" font-bold mb-2">
               Get in Touch with Intelli Assess
             </h2>
@@ -61,7 +61,7 @@ function Contect() {
           </p>
         </div>
         <div className=" w-full my-15 flex  justify-center items-center">
-          <div className="max-w-md w-full bg-white rounded-xl Custom_Scroll overflow-y-auto p-5 space-y-1">
+          <div className="max-w-md w-full bg-white Box_Shedow rounded-xl Custom_Scroll overflow-y-auto p-5 space-y-1">
             <h2 className='Text_Color font-bold text-center'>Contect me</h2>
             <p style={{ animation: 'appear 3s ease-out' }} className="text-center text-gray-800">
               Send your message

@@ -23,7 +23,7 @@ function allLoginStudentData() {
 
   return (
     <>
-      <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto bg-indigo-50">
+      <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto bg-white Box_Shedow">
         <Link to="/admin-dashboard" >
           <IoIosArrowRoundBack className="text-indigo-500 text-4xl"/>
         </Link>

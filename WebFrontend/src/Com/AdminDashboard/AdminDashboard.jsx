@@ -24,11 +24,16 @@ function AdminDashboard() {
 
     return (
         <>
-            <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto bg-indigo-50">
-                <Link to="/all-student">
-                    <button className="BG_Color text-white p-2 rounded-xl font-bold cursor-pointer">List of Student</button>
-                </Link>
-                <h2 className="Text_Color text-center font-bold my-4 gap-6 flex justify-center items-center"><FcTodoList /> All Student Results</h2>
+            <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto bg-white Box_Shedow">
+                <div className="flex gap-2">
+                    <Link to="/all-student">
+                        <button className="BG_Color text-white p-2 rounded-xl font-bold cursor-pointer">List of student</button>
+                    </Link>
+                    <Link to="/set-paper">
+                        <button className="BG_Color text-white p-2 rounded-xl font-bold cursor-pointer">Set paper</button>
+                    </Link>
+                </div>
+                <h2 className="Text_Color text-center font-bold my-4 gap-6 flex justify-center items-center"><FcTodoList /> All student results</h2>
 
                 <table className="w-full text-black p-6">
                     <tbody>

@@ -15,6 +15,7 @@ import AdminDashboard from './Com/AdminDashboard/AdminDashboard.jsx';
 import AllLoginStudentData from './Com/AdminDashboard/allLoginStudentData.jsx';
 import { useAuth } from "./Context/AuthProvider.jsx";
 import Loading from './Com/Loading/Loading.jsx';
+import SetPaper from './Com/AdminDashboard/SetPaper.jsx';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
 
   return (
     <>
-      <div className="w-full Font_Text h-screen BG_Color Custom_Scroll overflow-y-auto">
+      <div className="w-full Font_Text h-screen bg-[#dff2fe70] Custom_Scroll overflow-y-auto">
         <div className='w-[95%] mx-auto  min-[1700px]:w-[70%] min-[3500px]:w-[40%]'>
           {loading ? (
             <Loading />
@@ -45,8 +46,11 @@ function App() {
               <Route path="/start-exam" element={authUser ? <StudentExam /> : <Navigate to="/" />} />
               <Route path="/admin-dashboard" element={authUser?.user?.role === "@dmin" ? <AdminDashboard /> : <Navigate to="/" />} />
               <Route path="/all-student" element={authUser?.user?.role === "@dmin" ? <AllLoginStudentData /> : <Navigate to="/" />} />
+              <Route path="/set-paper" element={authUser?.user?.role === "@dmin" ? <SetPaper/> : <Navigate to="/" />} />
+
               <Route path="*" element={authUser ? <Dashboard /> : <Navigate to="/" />} />
             </Routes>
+            
           </>
           )}
         </div>

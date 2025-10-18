@@ -25,7 +25,7 @@ function Dashboard() {
   return (
     <>
       <div style={{ minHeight: "calc( 100vh - 60px )" }} className=" w-full flex flex-col justify-center items-center">
-        <div style={{ maxHeight: "calc( 100vh - 60px )" }} className=" md:w-96 p-5 rounded-xl inline bg-white overflow-y-auto">
+        <div style={{ maxHeight: "calc( 100vh - 60px )" }} className=" md:w-96 p-5 rounded-xl inline bg-white Box_Shedow overflow-y-auto">
           <div className='container'>
             <h2 className='title text-light text-center text-indigo-500 font-bold'>Exam Instructions</h2>
             <ol className='p-5 h-80 Custom_Scroll overflow-y-auto text-justify'>

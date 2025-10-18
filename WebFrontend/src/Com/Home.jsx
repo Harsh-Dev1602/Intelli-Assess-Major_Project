@@ -53,14 +53,14 @@ function Home() {
                 </h1>
 
                 <div className=" grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-3 lg:gap-25">
-                    <div className="bg-white shadow-lg rounded-xl p-4 text-center hover:shadow-2xl transition">
+                    <div className="bg-white Box_Shedow rounded-xl p-4 text-center hover:shadow-2xl transition">
                         <FaLaptopCode className="text-blue-600 text-5xl mx-auto mb-4" />
                         <h3 className=" font-semibold mb-2 Text_Color">Online Exams</h3>
                         <p className="text-gray-600">
                             Attend exams anytime, anywhere with a seamless online interface.
                         </p>
                     </div>
-                    <div className="bg-white shadow-lg rounded-xl p-4 text-center hover:shadow-2xl transition">
+                    <div className="bg-white Box_Shedow rounded-xl p-4 text-center hover:shadow-2xl transition">
                         <FaChartBar className="text-purple-600 text-5xl mx-auto mb-4" />
                         <h3 className=" font-semibold mb-2 Text_Color">Instant Results</h3>
                         <p className="text-gray-600">
@@ -68,7 +68,7 @@ function Home() {
                         </p>
                     </div>
 
-                    <div className="bg-white shadow-lg rounded-xl p-4 text-center hover:shadow-2xl transition">
+                    <div className="bg-white Box_Shedow rounded-xl p-4 text-center hover:shadow-2xl transition">
                         <FaLock className="text-red-600 text-5xl mx-auto mb-4" />
                         <h3 className=" font-semibold Text_Color mb-2">Secure Login</h3>
                         <p className="text-gray-600">
@@ -77,7 +77,7 @@ function Home() {
                     </div>
                 </div>
             </section>
-            <div style={{ backgroundImage: `url(${Img3})` }} className="w-full mx-auto h-screen xl:h-auto xl:py-50 bg-center bg-cover object-cover rounded-xl my-5 flex justify-start lg:items-center">
+            <div style={{ backgroundImage: `url(${Img3})` }} className="w-full mx-auto h-screen xl:h-auto xl:py-50 bg-center bg-cover object-cover rounded-xl my-5 flex justify-start lg:items-center Box_Shedow">
                 <h2 className="w-100 p-5 rounded-xl text-center font-semibold text-indigo-500">
                     Intelli Assess is an advanced online examination platform designed to
                     simplify the process of conducting and managing exams digitally.

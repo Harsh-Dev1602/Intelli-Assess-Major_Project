@@ -28,8 +28,8 @@ const StyledWrapper = styled.div`
 
   .loader-track {
     position: relative;
-    width: 180px;
-    height: 32px;
+    width: 200px;
+    height: 20px;
     background: linear-gradient(to right, #1e2939, #4f39f6, #51a2ff);
     border-radius: 16px;
     overflow: hidden;
@@ -54,9 +54,9 @@ const StyledWrapper = styled.div`
   }
 
   .loading-text {
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
     letter-spacing: 1px;
     animation: textGlow 1s ease-in-out infinite;
   }
