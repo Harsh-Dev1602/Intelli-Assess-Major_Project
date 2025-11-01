@@ -24,7 +24,7 @@ function AdminDashboard() {
 
     return (
         <>
-            <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto bg-white Box_Shedow">
+            <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto ">
                 <div className="flex gap-2">
                     <Link to="/all-student">
                         <button className="BG_Color text-white p-2 rounded-xl font-bold cursor-pointer">List of student</button>

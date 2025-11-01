@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { register , login , logout, allStudentData } from "../controllers/user.controller.js";
-import {addQuestion,allques, allans} from '../controllers/question.controller.js';
+import {addQuestion ,showQuestion,deleteQueston,allques, allans} from '../controllers/question.controller.js';
 import { results , checkResults,allStudentList} from '../controllers/results.controller.js';
 import { secureRoute,adminSecureRoute} from '../middleware/auth.js'
 
@@ -14,6 +14,8 @@ router.get("/allStudentData",adminSecureRoute,allStudentData)
 
 // All Ques and ans API
 router.post("/addquestions",addQuestion)
+router.get("/showquestion",secureRoute,showQuestion)
+router.delete("/deletequestion/:user",adminSecureRoute,deleteQueston)
 router.get("/questions",secureRoute,allques)
 router.get('/answers',secureRoute,allans)
 

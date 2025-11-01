@@ -23,9 +23,9 @@ function allLoginStudentData() {
 
   return (
     <>
-      <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto bg-white Box_Shedow">
+      <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto">
         <Link to="/admin-dashboard" >
-          <IoIosArrowRoundBack className="text-indigo-500 text-4xl"/>
+          <IoIosArrowRoundBack className="text-indigo-500 text-4xl inline hover:bg-gray-200 rounded-xl"/>
         </Link>
         <h2 className="Text_Color text-center font-bold my-4 gap-6 flex justify-center items-center">
           <FcTodoList /> All login history
