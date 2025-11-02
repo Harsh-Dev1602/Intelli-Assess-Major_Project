@@ -105,7 +105,7 @@ export const questions = [
     {
         id: 6,
         question: "What is the output of the following Java code.",
-        img: "../../public/ImgData/Ques6Img.png",
+        img: "/ImgData/Ques6Img.png",
         options: [
             '4 and 2',
             '2 and 4',
@@ -146,7 +146,7 @@ export const questions = [
     {
         id: 10,
         question: "What will be the output of the following program?",
-         img: "../../public/ImgData/Ques10Img.png",
+         img: "/ImgData/Ques10Img.png",
         options: [
             "Yrdnuof nas",
             "Foundry nas",

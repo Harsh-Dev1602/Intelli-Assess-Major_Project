@@ -3,9 +3,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { FaLaptopCode, FaChartBar, FaBookOpen, FaAward, FaLock } from "react-icons/fa";
+import { FaLaptopCode, FaChartBar, FaLock } from "react-icons/fa";
+import Img1 from "../../public/Bg_Img/Bg_Img1.png"
+import Img2 from "../../public/Bg_Img/Bg_Img2.png"
 import Img3 from '../../public/Bg_Img/Bg_Img3.jpg'
 import Img5 from '../../public/Bg_Img/Bg_Img5.jpg'
+
 
 import Footer from './Footer';
 
@@ -13,12 +16,12 @@ function Home() {
     const BG_Img = [
         {
             id: 0,
-            img: "../public/Bg_Img/Bg_Img1.png",
+            img: Img1,
             text: "A Secure and Scalable Online Examination System",
         },
         {
             id: 1,
-            img: "../public/Bg_Img/Bg_Img2.png",
+            img: Img2,
             text: "Scalable to accommodate thousands of students simultaneously during exams.",
         },
     ]
