@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from "path";
 
 import seedAdmin from "./controllers/admin.controller.js"
 import userRouter from "./routes/user.route.js";
@@ -27,6 +28,14 @@ try {
 }
 
 app.use("/oes-api/user",userRouter);
+
+if (process.env.NODE_ENV === 'production') {
+    const dirPath = path.resolve();
+    app.use(express.static("./WebFrontend/dist"));
+    app.get(/.*/, (req, res) => {
+        res.sendFile(path.resolve(dirPath,'./WebFrontend/dist','index.html'));
+    });
+}
 
 app.listen(PORT, () => {
   console.log(`Web backend run this port http://localhost:${PORT}`)
