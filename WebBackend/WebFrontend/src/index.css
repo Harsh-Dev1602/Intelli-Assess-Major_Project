@@ -5,7 +5,7 @@
 }
 
 .Box_Shedow {
-  box-shadow: 1px 1px 2px #312c85;
+  box-shadow: 1px 1px 4px #cccc;
 }
 
 .BG_Color {
@@ -20,11 +20,10 @@
 
 .Custom_Scroll::-webkit-scrollbar {
   width: 8px;
-  
 }
 
 .Custom_Scroll::-webkit-scrollbar-track {
-  background-color: #cccccc65;
+  background-color: transparent;
    border-radius: 12px;
 }
 
@@ -35,6 +34,7 @@
 
 .Custom_Scroll::-webkit-scrollbar-thumb:hover {
   background-color: #6f5cff;
+  cursor: pointer;
 }
 
 

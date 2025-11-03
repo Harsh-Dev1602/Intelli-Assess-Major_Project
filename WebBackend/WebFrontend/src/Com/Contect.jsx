@@ -62,7 +62,7 @@ function Contect() {
         </div>
         <div className=" w-full my-15 flex  justify-center items-center">
           <div className="max-w-md w-full bg-white Box_Shedow rounded-xl Custom_Scroll overflow-y-auto p-5 space-y-1">
-            <h2 className='Text_Color font-bold text-center'>Contect me</h2>
+            <h2 className='Text_Color font-bold text-center'>Contact me</h2>
             <p style={{ animation: 'appear 3s ease-out' }} className="text-center text-gray-800">
               Send your message
             </p>

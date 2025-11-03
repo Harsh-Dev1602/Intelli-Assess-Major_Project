@@ -4,11 +4,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { FaLaptopCode, FaChartBar, FaLock } from "react-icons/fa";
-import Img1 from "../../public/Bg_Img/Bg_Img1.png"
-import Img2 from "../../public/Bg_Img/Bg_Img2.png"
+import Img1 from "../../public/Bg_Img/Bg_Img1.jpeg"
+import Img2 from "../../public/Bg_Img/Bg_Img2.jpeg"
 import Img3 from '../../public/Bg_Img/Bg_Img3.jpg'
-import Img5 from '../../public/Bg_Img/Bg_Img5.jpg'
-
 
 import Footer from './Footer';
 
@@ -42,7 +40,7 @@ function Home() {
                     {BG_Img.map(({ id, img, text }) => (
                         <div key={id} className="h-50 md:h-100 mx-auto object-contain lg:h-150 bg-gray-100 rounded-xl bg-cover">
                             <div style={{ backgroundImage: `url(${img})` }} className="h-50 md:h-100 mx-auto object-cover bg-cover bg-center lg:h-150 flex justify-center items-center px-5 lg:px-20 rounded-xl">
-                                <p className='bg-white text-center p-1 lg:p-5 text-indigo-500 font-bold rounded-xl'>{text}</p>
+                                <h2 className='bg-white text-center p-1 lg:p-5 text-indigo-500 font-bold rounded-xl'>{text}</h2>
                             </div>
                         </div>
                     ))
@@ -50,7 +48,7 @@ function Home() {
                 </Slider>
 
             </div>
-             <section style={{ backgroundImage: `url(${Img5})` }} className="h-auto xl:py-50 flex flex-col justify-end  mx-auto my-5 p-5 rounded-xl object-cover bg-cover bg-center">
+             <section className="h-auto xl:py-20 flex flex-col justify-end  mx-auto my-5 p-5 rounded-xl object-cover bg-cover bg-center">
                 <h1 className=" font-bold text-center BG_Color mx-auto p-1 rounded-xl text-white mb-5">
                  Key Features
                 </h1>

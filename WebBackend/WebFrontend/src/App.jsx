@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-      <div className="w-full Font_Text h-screen bg-[#dff2fe5b] Custom_Scroll overflow-y-auto">
+      <div className="w-full Font_Text h-screen bg-indigo-50 Custom_Scroll overflow-y-auto">
         <div className='w-[95%] mx-auto  min-[1700px]:w-[70%] min-[3500px]:w-[40%]'>
           {loading ? (
             <Loading />
@@ -45,7 +45,7 @@ function App() {
               <Route path="/" element={authUser ? <Navigate to="/dashboard" /> : <Home />} />
               <Route path='/about' element={<About />} />
               <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-              <Route path='/contect' element={<Contect />} />
+              <Route path='/contact' element={<Contect />} />
 
               <Route path="/login" element={authUser ? <Navigate to="/dashboard" /> : <Login />} />
               <Route path="/signup" element={authUser ? <Navigate to="/dashboard" /> : <Signup />} />

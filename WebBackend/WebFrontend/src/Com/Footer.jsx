@@ -19,26 +19,15 @@ function Footer() {
 
         }, {
             id: 2,
-            text: "Contect us",
-            link: "/contect"
+            text: "Contact us",
+            link: "/contact"
 
         }, {
             id: 3,
             text: "Privacy Policy",
             link: "/privacy-policy"
 
-        }, {
-            id: 4,
-            text: "Terms of Service",
-            link: "/"
-
-        },
-        {
-            id: 5,
-            text: "FAQ us",
-            link: "/"
-
-        },
+        }
     ]
     const Icon = [
         {
