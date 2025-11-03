@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import toast from 'react-hot-toast'
 import axios from "axios";
 import { MdPermCameraMic } from "react-icons/md";
@@ -16,6 +16,8 @@ function StudentExam() {
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const scrollRef = useRef(null);
 
   // ✅ Fullscreen functions
   const enterFullScreen = () => {
@@ -87,11 +89,31 @@ function StudentExam() {
 
   const handleNext = () => {
     if (selected !== null) {
-      if (selected === answers[currentQ]) setScore(score + 1);
+      // ✅ Save selected answer
+      const updated = [...selectedAnswers];
+      updated[currentQ] = selected;
+      setSelectedAnswers(updated);
+
+      // ✅ Check score
+      if (selected === answers[currentQ]) {
+        setScore(score + 1);
+      }
+
+      // ✅ Move next or finish
       setSelected(null);
-      if (currentQ + 1 < questions.length) setCurrentQ(currentQ + 1);
-      else setFinished(true);
-    } else toast.error("Select an option!");
+
+      if (scrollRef.current) {
+        scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      if (currentQ + 1 < questions.length) {
+        setCurrentQ(currentQ + 1);
+      } else {
+        setFinished(true);
+      }
+
+    } else {
+      toast.error("Select an option!");
+    }
   };
 
 
@@ -132,7 +154,6 @@ function StudentExam() {
       })
     }
 
-
     return (
       <div className="w-[90%] sm:w-130 text-center absolute Box_Shedow bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6 flex justify-center items-center flex-col gap-1">
         <h2 className="text-2xl font-bold "><span className="Text_Color">Exam Finished</span>  🎉</h2>
@@ -140,6 +161,29 @@ function StudentExam() {
         <p> Percentage: {percentage.toFixed(2)}% </p>
         <p className={`p-2 px-5  text-white font-semibold rounded-xl ${percentage >= 40 ? "bg-green-800" : "bg-red-800"}`} > {status}</p>
         <Link onClick={saveData} to="/dashboard" className="BG_Color p-2 text-white font-bold rounded-xl"> Go dashboard</Link>
+
+        {status === "✅ Passed" && (
+          <div className="bg-white p-3 my-3 rounded-xl h-60 overflow-y-auto Custom_Scroll">
+            {questions.map((q, i) => {
+              const userAns = selectedAnswers[i];
+              const correctAns = answers[i];
+              const correct = userAns === correctAns;
+
+              return (
+                <div key={i} className={`my-2 p-2 rounded-xl border 
+                    ${correct ? "bg-green-100 border-green-600" : "bg-red-100 border-red-600"}`}>
+                  <p><strong>Q{i + 1}:</strong> {q.question}</p>
+                  <p>Your Answer: <span className={correct ? "text-green-700" : "text-red-700"}>
+                    {q.options[userAns] || "Not Answered"}
+                  </span></p>
+                  <p>Correct Answer: <span className="text-green-800 font-bold">
+                    {q.options[correctAns]}
+                  </span></p>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     );
   }
@@ -156,8 +200,8 @@ function StudentExam() {
 
         {questions.length > 0 && (
           <>
-            <div style={{ minHeight: "300px" }}>
-              <div style={{ maxHeight: "300px" }} className="overflow-y-auto Custom_Scroll">
+            <div style={{ minHeight: "250px" }}>
+              <div ref={scrollRef} style={{ maxHeight: "250px" }} className="overflow-y-auto Custom_Scroll">
                 <p className="text-justify">{questions[currentQ].question}</p>
 
                 {questions[currentQ].img && (
