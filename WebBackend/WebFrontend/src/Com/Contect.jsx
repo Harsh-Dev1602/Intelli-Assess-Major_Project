@@ -41,10 +41,10 @@ function Contect() {
         <div className="flex flex-col md:flex-row justify-evenly gap-5 items-center my-5">
           <img src={Img7} className='w-60 lg:w-70 rounded-xl Box_Shedow' />
           <div className="w-10/12 lg:w-1/2 text-center rounded-xl p-2">
-            <h2 className=" font-bold mb-2">
+            <h2 className=" font-bold mb-2 text-indigo-500">
               Get in Touch with Intelli Assess
             </h2>
-            <p>
+            <p className='text-justify'>
               Have questions about our online examination system? Reach out to us
               — our team will respond within one business day.
             </p>
@@ -56,7 +56,7 @@ function Contect() {
             <span className='flex hover:underline cursor-pointer justify-start items-center'><MdCall className='text-indigo-600 text-2xl mr-2' /> +91 98XXXXXX10 </span>
             <span className='flex hover:underline cursor-pointer justify-start items-center'><ImLocation className='text-red-600 text-2xl mr-2' /> Indore, Madhya Pradesh, India </span>
           </div>
-          <p className="w-70 bg-white p-2 rounded-xl">
+          <p className="w-70 lg:w-100 bg-white text-center p-2 rounded-xl">
             We respect your privacy — your contact details will only be used to respond to your inquiry.
           </p>
         </div>

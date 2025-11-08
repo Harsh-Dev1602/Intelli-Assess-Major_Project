@@ -35,7 +35,7 @@ function Home() {
     };
     return (
         <>
-            <div className="w-full mx-auto bg-[#cccccc65] p-2 rounded-xl my-5">
+            <div className="w-full mx-auto bg-[#cccccc65] p-1 rounded-xl my-5">
                 <Slider {...settings}>
                     {BG_Img.map(({ id, img, text }) => (
                         <div key={id} className="h-50 md:h-100 mx-auto object-contain lg:h-150 bg-gray-100 rounded-xl bg-cover">

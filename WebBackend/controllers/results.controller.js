@@ -13,7 +13,7 @@ export const results = async (req, res) => {
 export const checkResults = async (req, res) => {
   try {
     const { user } = req.params;
-    const existing = await Result.findOne({ user: user });
+    const existing = await Result.findOne({ user: user, status: "✅ Passed"});
     if (existing) {
       return res.json({ taken: true });
     }

@@ -9,7 +9,7 @@ function Navbar() {
 
     return (
         <>
-            <div className=" w-full mx-auto h-15 py-1 md:px-10 px-2 rounded-b-xl  bg-white flex justify-between Box_Shedow items-center ">
+            <div className=" w-full mx-auto h-15 py-1 md:px-20 px-2 rounded-b-xl  bg-white flex justify-between Box_Shedow items-center ">
                 <Link to="/" className='flex justify-center items-center'>
                     <img src={logo} className='w-5 min-[375px]:w-10'/>
                     <h2 className=' Text_Color font-bold'>Intelli Assess</h2>

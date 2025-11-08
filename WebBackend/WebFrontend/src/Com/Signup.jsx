@@ -44,7 +44,7 @@ function Signup() {
     return (
         <>
             <div style={{ minHeight: "calc( 100vh - 60px )" }} className="animate__animated animate__flipInY w-full  flex justify-center items-center">
-                <div style={{ maxHeight: "calc( 100vh - 60px )" }} className="max-w-md w-full bg-white rounded-xl Box_Shedow overflow-y-auto Custom_Scroll p-5 space-y-1">
+                <div style={{ maxHeight: "calc( 100vh - 60px )" }} className="max-w-md w-full bg-white rounded-xl Box_Shedow overflow-y-auto Custom_Scroll p-5 space-y-2">
                     <h2 className='Text_Color font-bold text-center'>Create your account</h2>
                     <p style={{ animation: 'appear 3s ease-out' }} className="text-center text-gray-800">
                        Join our smart and secure online examination system today.
@@ -70,7 +70,7 @@ function Signup() {
                             Sign Up
                         </button>
                     </form>
-                    <div className="text-center">
+                    <div className="text-center mt-2">
                         <Link to="/login" className=" text-gray-900">
                             Have an account?
                             <span className="text-indigo-600 pl-1 font-bold hover:underline cursor-pointer">Log in now</span>

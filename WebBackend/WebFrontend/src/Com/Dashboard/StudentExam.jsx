@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import toast from 'react-hot-toast'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import Slider from "react-slick";
 import axios from "axios";
 import { MdPermCameraMic } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -142,7 +146,6 @@ function StudentExam() {
     const status = percentage >= 40 ? "✅ Passed" : "❌ Failed";
 
     const saveData = () => {
-      if (status !== "✅ Passed") return;
       axios.post("oes-api/user/results", {
         score,
         total: questions.length,
@@ -153,37 +156,44 @@ function StudentExam() {
         console.log("Error saving result:", err)
       })
     }
+    var settings = {
+      speed: 1000,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
+    };
 
     return (
-      <div className="w-[90%] sm:w-130 text-center absolute Box_Shedow bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 p-6 flex justify-center items-center flex-col gap-1">
+      <div className="w-[90%] sm:w-130 text-center absolute Box_Shedow lg:p-6 bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 overflow-y-auto Custom_Scroll flex justify-center items-center flex-col gap-2">
         <h2 className="text-2xl font-bold "><span className="Text_Color">Exam Finished</span>  🎉</h2>
         <p>Your Score: {score}/{questions.length}</p>
         <p> Percentage: {percentage.toFixed(2)}% </p>
         <p className={`p-2 px-5  text-white font-semibold rounded-xl ${percentage >= 40 ? "bg-green-800" : "bg-red-800"}`} > {status}</p>
-        <Link onClick={saveData} to="/dashboard" className="BG_Color p-2 text-white font-bold rounded-xl"> Go dashboard</Link>
 
+        <Link onClick={saveData} to="/dashboard" className="BG_Color p-2 px-8  text-white font-bold rounded-xl"> Go dashboard</Link>
         {status === "✅ Passed" && (
-          <div className="bg-white p-3 my-3 rounded-xl h-60 overflow-y-auto Custom_Scroll">
-            {questions.map((q, i) => {
-              const userAns = selectedAnswers[i];
-              const correctAns = answers[i];
-              const correct = userAns === correctAns;
+          <div className="w-full h-auto bg-white rounded-xl p-1 border-2 border-gray-900 " >
+            <Slider {...settings}>
+              {questions.map((q, i) => {
+                const userAns = selectedAnswers[i];
+                const correctAns = answers[i];
+                const correct = userAns === correctAns;
 
-              return (
-                <div key={i} className={`my-2 p-2 rounded-xl border 
-                    ${correct ? "bg-green-100 border-green-600" : "bg-red-100 border-red-600"}`}>
-                  <p><strong>Q{i + 1}:</strong> {q.question}</p>
-                  <p>Your Answer: <span className={correct ? "text-green-700" : "text-red-700"}>
-                    {q.options[userAns] || "Not Answered"}
-                  </span></p>
-                  <p>Correct Answer: <span className="text-green-800 font-bold">
-                    {q.options[correctAns]}
-                  </span></p>
-                </div>
-              );
-            })}
+                return (
+                  <div key={i} className='w-full text-xl p-4 rounded-xl'>
+                    <p className="m-auto text-justify"><strong>Q{i + 1}:</strong> {q.question}</p>
+                    <p>Your Answer: <span className={`${correct ? "text-green-700" : "text-red-700"}`}>
+                      {q.options[userAns] || "Not Answered"}
+                    </span></p>
+                    <p>Correct Answer: <span className="text-green-700 font-semibold">
+                      {q.options[correctAns]}
+                    </span></p>
+                  </div>
+                );
+              })}
+            </Slider>
           </div>
         )}
+
       </div>
     );
   }
@@ -201,7 +211,7 @@ function StudentExam() {
         {questions.length > 0 && (
           <>
             <div style={{ minHeight: "250px" }}>
-              <div ref={scrollRef} style={{ maxHeight: "250px" }} className="overflow-y-auto Custom_Scroll">
+              <div ref={scrollRef} style={{ maxHeight: "250px" }} className="p-2 overflow-y-auto Custom_Scroll">
                 <p className="text-justify">{questions[currentQ].question}</p>
 
                 {questions[currentQ].img && (
@@ -212,9 +222,9 @@ function StudentExam() {
                 )}
 
                 {questions[currentQ].options.map((opt, idx) => (
-                  <label key={idx} className={`block w-full rounded-xl p-2 my-2 cursor-pointer ${selected === idx ? "BG_Color  text-white" : "bg-[#cccccc50]"}`}
+                  <label key={idx} className={`block w-full rounded-xl p-2 my-2 cursor-pointer ${selected === idx ? "BG_Color  text-white" : "bg-[#cccccc2d]"}`}
                   >
-                    <input type="radio" name="option" value={idx} checked={selected === idx} onChange={() => setSelected(idx)} className=" mr-5" />{opt} </label>
+                    <input type="radio" name="option" value={idx} checked={selected === idx} onChange={() => setSelected(idx)} className=" bg-indigo-500 mr-5" />{opt} </label>
                 ))}
 
               </div>
@@ -234,3 +244,15 @@ function StudentExam() {
 }
 
 export default StudentExam;
+
+const PrevArrow = ({ onClick }) => (
+  <div className="custom-arrow prev" onClick={onClick}>
+    <MdKeyboardArrowLeft size={25} color="white" />
+  </div>
+);
+
+const NextArrow = ({ onClick }) => (
+  <div className="custom-arrow next" onClick={onClick}>
+    <MdKeyboardArrowRight size={25} color="white" />
+  </div>
+);

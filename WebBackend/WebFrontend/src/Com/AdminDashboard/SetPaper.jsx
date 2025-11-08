@@ -62,14 +62,14 @@ function SetPaper() {
             value={questionData.options.D} onChange={handleChange} /><br />
 
           <label className="w-full text-indigo-500 font-bold">Correct Answer:</label>
-          <select name="correctAnswer" className="w-50 bg-indigo-100 rounded-xl cursor-pointer outline-none p-2" value={questionData.correctAnswer} onChange={handleChange}>
-            <option required className="w-50" value="A">A</option>
-            <option required className="w-50" value="B">B</option>
-            <option required className="w-50" value="C">C</option>
-            <option required className="w-50" value="D">D</option>
+          <select name="correctAnswer" className="w-20 ml-5 bg-indigo-50 text-gray-800 font-bold text-center rounded-xl cursor-pointer outline-none py-2" value={questionData.correctAnswer} onChange={handleChange}>
+            <option required value="A">A</option>
+            <option required value="B">B</option>
+            <option required value="C">C</option>
+            <option required value="D">D</option>
           </select>
           <br />
-          <button className="BG_Color text-white p-2 rounded-xl font-bold cursor-pointer" type="submit">Save Question</button>
+          <button className="BG_Color text-white mt-2 p-2 rounded-xl font-bold cursor-pointer" type="submit">Save Question</button>
         </form>
       </div>
     </>

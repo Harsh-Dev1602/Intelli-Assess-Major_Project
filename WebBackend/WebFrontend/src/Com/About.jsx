@@ -32,9 +32,9 @@ function About() {
         <div className=' my-5  text-black flex justify-evenly flex-col lg:flex-row items-center gap-5 lg:gap-10'>
           <img src={Img4} className='Box_Shedow order-2 rounded-xl w-70 lg:w-100' />
           <div className="lg:w-1/2 text-center  rounded-xl p-5 lg:order-2 ">
-            <h1 className=' font-bold'>About Intelli Assess</h1>
-            <h3 className='font-medium'>Smart, Secure, Scalable Online Examinations</h3>
-            <p>Intelli Assess is an end-to-end online examination platform designed to simplify and secure the entire assessment lifecycle. From question creation and proctored live exams to instant grading and analytics, Intelli Assess helps educators and administrators create fair, flexible, and data-driven evaluations — saving time while improving assessment quality.</p>
+            <h1 className=' font-bold text-indigo-500'>About Intelli Assess</h1>
+            <h3 className='font-medium text-gray-500'>Smart, Secure, Scalable Online Examinations</h3>
+            <p className=' text-justify'>Intelli Assess is an end-to-end online examination platform designed to simplify and secure the entire assessment lifecycle. From question creation and proctored live exams to instant grading and analytics, Intelli Assess helps educators and administrators create fair, flexible, and data-driven evaluations — saving time while improving assessment quality.</p>
           </div>
         </div>
         <div className="text-black p-5 text-justify rounded-xl  my-5">
@@ -46,7 +46,7 @@ function About() {
         </div>
 
         <div className="text-black p-1 text-justify flex flex-col lg:flex-row justify-evenly rounded-xl my-2">
-          <h1 className=' rounded-xl p-1 flex justify-center items-center h-20 font-bold'>Key feature</h1>
+          <h1 className=' rounded-xl p-1 flex justify-center items-center h-20 font-semibold text-indigo-500'>Key feature</h1>
           <ul className=' rounded-xl p-5'>
             <li className=' list-disc ml-5'>Flexible question types: MCQ, short answer, essay, coding, image/audio questions.</li>
             <li className=' list-disc ml-5'>Automated grading + manual review workflows.</li>
@@ -62,24 +62,26 @@ function About() {
         </div>
         <div className="flex justify-evenly flex-col lg:flex-row items-center gap-5 lg:gap-20 my-1">
           <div className=' lg:w-1/2 text-center rounded-xl p-10 text-black'>
-            <h1 className=' font-bold'>Technology & security</h1>
-            <p >Intelli Assess is built with modern, scalable web technologies and follows security best practices: encrypted data in transit and at rest, secure authentication, and comprehensive logging. APIs allow integration with popular LMS and HR systems.</p>
+            <h1 className='font-semibold text-indigo-500'>Technology & security</h1>
+            <p className='text-justify'>Intelli Assess is built with modern, scalable web technologies and follows security best practices: encrypted data in transit and at rest, secure authentication, and comprehensive logging. APIs allow integration with popular LMS and HR systems.</p>
           </div>
-          <img src={Img6} className='w-70 rounded-xl Box_Shedow' />
+          <div className="lg:w-1/2 flex justify-center items-center">
+          <img src={Img6} className='w-70 rounded-xl Box_Shedow rotate-3' />
+          </div>
         </div>
 
         <div className=" rounded-xl py-5 text-center">
-          <h2 className=" font-bold rounded-xl py-2 mb-5">
+          <h2 className=" font-bold rounded-xl py-2 mb-5 text-indigo-500">
             Meet Our Development Team
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 p-1">
             {team.map((member, index) => (
               <div key={index} className="bg-white Box_Shedow rounded-xl p-2">
-                <h3 className="text-xl font-semibold Text_Color">
+                <h3 className="text-xl font-bold Text_Color">
                   {member.name}
                 </h3>
-                <p className="text-gray-600 text-sm">{member.role}</p>
-                <p className="text-gray-500 mt-2 text-sm">{member.desc}</p>
+                <p className="text-gray-600">{member.role}</p>
+                <p className="text-gray-800 mt-2 text-sm">{member.desc}</p>
               </div>
             ))}
           </div>
