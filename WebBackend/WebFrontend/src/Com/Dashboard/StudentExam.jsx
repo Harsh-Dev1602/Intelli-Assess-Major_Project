@@ -200,7 +200,7 @@ function StudentExam() {
 
   return (
     <>
-      <div className=" w-[95%] Box_Shedow bg-white rounded-xl absolute  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 select-none p-4 lg:max-w-lg mx-auto flex justify-center items-start flex-col gap-4 Custom_Scroll overflow-y-auto">
+      <div style={{height:"calc(100vh - 100px)"}} className="w-[95%] Box_Shedow my-5 lg:w-[50%] rounded-xl select-none p-4 mx-auto flex justify-center items-start flex-col gap-4 Custom_Scroll overflow-y-auto">
 
         <h2 className="text-xl font-bold Text_Color">
           Question {currentQ + 1} of {questions.length}
@@ -210,8 +210,8 @@ function StudentExam() {
 
         {questions.length > 0 && (
           <>
-            <div style={{ minHeight: "250px" }}>
-              <div ref={scrollRef} style={{ maxHeight: "250px" }} className="p-2 overflow-y-auto Custom_Scroll">
+        
+              <div ref={scrollRef} className="p-2 overflow-y-auto Custom_Scroll">
                 <p className="text-justify">{questions[currentQ].question}</p>
 
                 {questions[currentQ].img && (
@@ -226,9 +226,7 @@ function StudentExam() {
                   >
                     <input type="radio" name="option" value={idx} checked={selected === idx} onChange={() => setSelected(idx)} className=" bg-indigo-500 mr-5" />{opt} </label>
                 ))}
-
-              </div>
-            </div>
+              </div>          
             <button
               onClick={handleNext}
               className=" p-1 px-4 cursor-pointer BG_Color text-white rounded"
