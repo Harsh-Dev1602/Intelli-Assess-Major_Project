@@ -163,7 +163,7 @@ function StudentExam() {
     };
 
     return (
-      <div className="w-[90%] sm:w-130 text-center absolute Box_Shedow lg:p-6 bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 overflow-y-auto Custom_Scroll flex justify-center items-center flex-col gap-2">
+      <div className="w-[90%] sm:w-130 text-center absolute Box_Shedow p-6 bg-white rounded-xl  top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 overflow-y-auto Custom_Scroll flex justify-center items-center flex-col gap-2">
         <h2 className="text-2xl font-bold "><span className="Text_Color">Exam Finished</span>  🎉</h2>
         <p>Your Score: {score}/{questions.length}</p>
         <p> Percentage: {percentage.toFixed(2)}% </p>
@@ -206,7 +206,7 @@ function StudentExam() {
           Question {currentQ + 1} of {questions.length}
         </h2>
 
-        <video id="examVideo" autoPlay muted className="w-50 h-auto rounded-xl bg-white Box_Shedow p-1"></video>
+        <video id="examVideo" autoPlay muted className=" w-40 lg:w-50 h-40 lg:h-auto rounded-xl bg-white Box_Shedow p-1"></video>
 
         {questions.length > 0 && (
           <>
