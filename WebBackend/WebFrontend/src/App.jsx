@@ -35,8 +35,7 @@ function App() {
 
   return (
     <>
-      <div className="w-full Font_Text h-screen Custom_Scroll overflow-y-auto">
-        <div className='w-[95%] mx-auto  min-[1700px]:w-[70%] min-[3500px]:w-[30%]'>
+      <div className="w-full mx-auto container h-screen Custom_Scroll overflow-y-auto">
           {loading ? (
             <Loading />
           ) : (<>
@@ -62,7 +61,6 @@ function App() {
 
           </>
           )}
-        </div>
         <Toaster
           position="bottom-right"
           reverseOrder={false}

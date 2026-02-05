@@ -74,7 +74,7 @@ function Footer() {
                             }
                         </ul>
                     </div>
-                    <div className="w-full text-white text-center">© 2025 Intelli Assess, <span className='px-2'>All Rights Reserved.</span>  <br />             Empowering education through smart, secure, and scalable online assessments.
+                    <div className="w-full text-white text-center">© {new Date().getFullYear()} Intelli Assess, <span className='px-2'>All Rights Reserved.</span>  <br />             Empowering education through smart, secure, and scalable online assessments.
                     </div>
                 </div>
             </div>

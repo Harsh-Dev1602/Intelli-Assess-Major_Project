@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import path from "path";
+import fs from "fs";
+import swaggerUi from "swagger-ui-express";
 
 import seedAdmin from "./controllers/admin.controller.js"
 import userRouter from "./routes/user.route.js";
@@ -28,6 +30,12 @@ try {
 }
 
 app.use("/oes-api/user",userRouter);
+
+const swaggerFile = JSON.parse(
+  fs.readFileSync("./swagger/swagger-output.json", "utf-8")
+);
+
+app.use("/oes-api/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 if (process.env.NODE_ENV === 'production') {
     const dirPath = path.resolve();
