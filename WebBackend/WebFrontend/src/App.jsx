@@ -22,65 +22,92 @@ import AllLoginStudentData from './Com/AdminDashboard/allLoginStudentData.jsx';
 import SetPaper from './Com/AdminDashboard/SetPaper.jsx';
 import ViewAllQues from './Com/AdminDashboard/ViewAllQues.jsx';
 
-
 function App() {
-  const [authUser, setAuthUser] = useAuth();
+  const [authUser] = useAuth();
   const [loading, setLoading] = useState(true);
 
+  // Mock loading effect for branding
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
+    return () => clearTimeout(timer);
   }, []);
 
+  // Helper for Role-Based Access Control
+  const isAdmin = authUser?.user?.role === "@dmin";
+
   return (
-    <>
-      <div className="w-full mx-auto container h-screen Custom_Scroll overflow-y-auto">
-          {loading ? (
-            <Loading />
-          ) : (<>
-            <Navbar />
+    <div className="w-full min-h-screen bg-[#f8f9fa] selection:bg-orange-100 selection:text-orange-600">
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Navbar />
+          <div className="animate__animated animate__fadeIn">
             <Routes>
+              {/* Public Routes */}
               <Route path="/" element={authUser ? <Navigate to="/dashboard" /> : <Home />} />
               <Route path='/about' element={<About />} />
               <Route path='/privacy-policy' element={<PrivacyPolicy />} />
               <Route path='/contact' element={<Contect />} />
-
               <Route path="/login" element={authUser ? <Navigate to="/dashboard" /> : <Login />} />
               <Route path="/signup" element={authUser ? <Navigate to="/dashboard" /> : <Signup />} />
-              <Route path="/dashboard" element={authUser ? (authUser?.user?.role === "@dmin" ? <Navigate to="/admin-dashboard" /> : <Dashboard />) : (<Navigate to="/" />)} />
-              <Route path="/start-exam" element={authUser ? <StudentExam /> : <Navigate to="/" />} />
 
-              <Route path="/admin-dashboard" element={authUser?.user?.role === "@dmin" ? <AdminDashboard /> : <Navigate to="/" />} />
-              <Route path="/all-student" element={authUser?.user?.role === "@dmin" ? <AllLoginStudentData /> : <Navigate to="/" />} />
-              <Route path="/set-paper" element={authUser?.user?.role === "@dmin" ? <SetPaper /> : <Navigate to="/" />} />
-              <Route path="/view-ques" element={authUser?.user?.role === "@dmin" ? <ViewAllQues /> : <Navigate to="/" />} />
+              {/* Student Routes */}
+              <Route 
+                path="/dashboard" 
+                element={authUser ? (isAdmin ? <Navigate to="/admin-dashboard" /> : <Dashboard />) : <Navigate to="/login" />} 
+              />
+              <Route 
+                path="/start-exam" 
+                element={authUser && !isAdmin ? <StudentExam /> : <Navigate to="/login" />} 
+              />
 
-              <Route path="*" element={authUser ? <Dashboard /> : <Navigate to="/" />} />
+              {/* Admin Routes */}
+              <Route path="/admin-dashboard" element={isAdmin ? <AdminDashboard /> : <Navigate to="/" />} />
+              <Route path="/all-student" element={isAdmin ? <AllLoginStudentData /> : <Navigate to="/" />} />
+              <Route path="/set-paper" element={isAdmin ? <SetPaper /> : <Navigate to="/" />} />
+              <Route path="/view-ques" element={isAdmin ? <ViewAllQues /> : <Navigate to="/" />} />
+
+              {/* Fallback */}
+              <Route path="*" element={<Navigate to={authUser ? "/dashboard" : "/"} />} />
             </Routes>
+          </div>
+        </>
+      )}
 
-          </>
-          )}
-        <Toaster
-          position="bottom-right"
-          reverseOrder={false}
-          toastOptions={{
-            style: {
-              fontSize: '20px',
-              fontWeight: "700",
-              borderRadius: "12px",
-              color: "#4f39f6",
-              border: "solid 2px #4f39f6",
-              backgroundColor: "white"
-            },
+      {/* Theme-Synced Toaster */}
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 3000,
+          style: {
+            fontSize: '14px',
+            fontWeight: "600",
+            borderRadius: "4px",
+            color: "#002347", // Navy
+            border: "1px solid #e5e7eb",
+            background: "#ffffff",
+            boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+          },
+          success: {
             iconTheme: {
-              secondary: 'white',
+              primary: '#10b981', // Green
+              secondary: '#ffffff',
             },
-          }}
-        />
-      </div>
-    </>
+          },
+          error: {
+            iconTheme: {
+              primary: '#ef4444', // Red
+              secondary: '#ffffff',
+            },
+          },
+        }}
+      />
+    </div>
   )
 }
 
-export default App
+export default App;

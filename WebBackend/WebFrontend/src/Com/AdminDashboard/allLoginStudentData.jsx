@@ -1,10 +1,10 @@
-import { IoIosArrowRoundBack } from "react-icons/io";
-import { FcTodoList } from "react-icons/fc";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { FaHistory, FaUserAlt, FaEnvelope, FaRegClock } from "react-icons/fa";
 
-function allLoginStudentData() {
+function AllLoginStudentData() {
   const [loginData, setLoginData] = useState([]);
 
   // ✅ Fetch login history
@@ -22,50 +22,82 @@ function allLoginStudentData() {
   }, []);
 
   return (
-    <>
-      <div style={{ height: "calc( 100vh - 110px )" }} className="p-5 my-5  rounded-xl Custom_Scroll overflow-y-auto">
-        <Link to="/admin-dashboard" >
-          <IoIosArrowRoundBack className="text-indigo-500 text-4xl inline hover:bg-gray-200 rounded-xl"/>
-        </Link>
-        <h2 className="Text_Color text-center font-bold my-4 gap-6 flex justify-center items-center">
-          <FcTodoList /> All login history
-        </h2>
+    <div className="bg-[#f8f9fa] min-h-[calc(100vh-80px)] p-6 lg:p-10 font-sans">
+      <div className="max-w-6xl mx-auto">
+        
+        {/* --- NAVIGATION & HEADER --- */}
+        <div className="flex items-center gap-4 mb-8">
+          <Link to="/admin-dashboard">
+            <div className="w-10 h-10 bg-white shadow-sm border border-gray-100 flex items-center justify-center rounded-full text-[#002347] hover:text-orange-500 transition-all">
+              <IoIosArrowRoundBack size={32} />
+            </div>
+          </Link>
+          <div>
+            <h1 className="text-[#002347] text-2xl font-extrabold flex items-center gap-3">
+              <FaHistory className="text-orange-500 text-xl" /> Student Login History
+            </h1>
+            <p className="text-gray-500 text-sm">Monitor system access and user activity logs.</p>
+          </div>
+        </div>
 
-        <table className="w-full border border-gray-300">
-          <tbody>
-            <tr className="BG_Color sticky top-0 font-bold text-white">
-              <th className="p-2 font-bold border-2 border-indigo-200">Full Name</th>
-              <th className="p-2 font-bold border-2 border-indigo-200">Email</th>
-              <th className="p-2 font-bold border-2 border-indigo-200"> Date & Time</th>
-            </tr>
-            {loginData.length > 0 ? (
-              loginData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((s) => (
-                  <tr key={s._id} className="hover:bg-indigo-100 transition-all">
-                    <td className="p-2 text-center border-2 border-indigo-200">{s.fullname}</td>
-                    <td className="p-2 text-center border-2 border-indigo-200">{s.email}</td>
-                    <td className="p-2 text-center border-2 border-indigo-200">
-                      {new Date(s.createdAt).toLocaleString("en-IN", {
-                        dateStyle: "medium",
-                        timeStyle: "short",
-                      })}
+        {/* --- DATA CARD --- */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-gray-50 text-[#002347] text-xs uppercase tracking-widest font-bold">
+                  <th className="p-5 border-b border-gray-100">
+                    <div className="flex items-center gap-2"><FaUserAlt className="text-gray-400"/> Full Name</div>
+                  </th>
+                  <th className="p-5 border-b border-gray-100">
+                    <div className="flex items-center gap-2"><FaEnvelope className="text-gray-400"/> Email Address</div>
+                  </th>
+                  <th className="p-5 border-b border-gray-100">
+                    <div className="flex items-center gap-2"><FaRegClock className="text-gray-400"/> Date & Time</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-50">
+                {loginData.length > 0 ? (
+                  loginData
+                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                    .map((s) => (
+                      <tr key={s._id} className="hover:bg-orange-50/30 transition-colors group">
+                        <td className="p-5 text-sm font-bold text-[#002347] group-hover:text-orange-600 transition-colors">
+                          {s.fullname}
+                        </td>
+                        <td className="p-5 text-sm text-gray-500 font-medium">
+                          {s.email}
+                        </td>
+                        <td className="p-5 text-sm">
+                          <span className="text-gray-600">
+                            {new Date(s.createdAt).toLocaleString("en-IN", {
+                              dateStyle: "medium",
+                              timeStyle: "short",
+                            })}
+                          </span>
+                        </td>
+                      </tr>
+                    ))
+                ) : (
+                  <tr>
+                    <td colSpan="3" className="p-12 text-center text-gray-400 italic">
+                      No login activity recorded yet.
                     </td>
                   </tr>
-              ))
-            ) : (
-              <tr>
-                <td
-                  colSpan="3"
-                  className="text-center border-2 border-indigo-200 font-bold p-4 text-indigo-500"
-                >
-                  No login data found.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* --- FOOTER INFO --- */}
+        <p className="mt-6 text-center text-gray-400 text-xs italic">
+          * Logs are automatically sorted by the most recent activity.
+        </p>
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default allLoginStudentData
+export default AllLoginStudentData;

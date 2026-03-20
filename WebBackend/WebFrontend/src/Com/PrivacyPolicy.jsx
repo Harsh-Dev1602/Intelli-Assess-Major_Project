@@ -1,51 +1,101 @@
+import React from 'react'
 import Footer from './Footer'
+import { FaShieldAlt, FaUserLock, FaCookieBite, FaDatabase } from 'react-icons/fa'
 
 function PrivacyPolicy() {
   return (
-    <>
-      <div style={{ height: "calc( 100vh - 60px )" }} className="w-full overflow-y-auto Custom_Scroll">
-        <div className="p-5">
-          <h1 className='text-center font-bold py-5 text-indigo-500'>Privacy Policy-Intelli Assess</h1>
-          <div className="p-2">
-            <h3 className=' font-semibold'> Effective Date: 1/10/2025</h3>
-            <p className='text-justify'>
-              At Intelli Assess us, we respect your privacy and are committed to protecting the personal information of students, teachers, and administrators using our online examination platform. This Privacy Policy explains what information we collect, how we use it, and how we protect it.</p>
+    <div className="bg-white font-sans text-[#002347]">
+      {/* --- HERO / BREADCRUMB SECTION --- */}
+      <section className="bg-[#f8f9fa] py-16 px-6 lg:px-20 text-center">
+        <h1 className="text-4xl font-extrabold mb-4">Privacy Policy</h1>
+        <p className="text-gray-500 text-sm tracking-widest uppercase">Intelli Assess • Effective Date: 01/10/2025</p>
+      </section>
 
+      {/* --- CONTENT SECTION --- */}
+      <section className="max-w-7xl mx-auto py-20 px-6 lg:px-10">
+        <div className="space-y-12">
+          
+          {/* Introduction */}
+          <div className="border-l-4 border-orange-500 pl-6 py-2">
+            <p className="text-gray-600 leading-relaxed italic">
+              At Intelli Assess, we respect your privacy and are committed to protecting the personal information of students, teachers, and administrators using our online examination platform. This Privacy Policy explains what information we collect, how we use it, and how we protect it.
+            </p>
           </div>
-          <div className="p-2">
-            <h3 className=' font-semibold'>1. Information We Collect</h3>
-            <p className='text-justify'>We collect information to ensure the proper functioning of Intelli Assess and to provide a secure exam environment. This includes:</p>
-            <ul>
-              <li className='ml-6 text-justify list-disc'>Personal Information: Name, email, phone number, username, password, school/organization details.</li>
-              <li className='ml-6 text-justify list-disc'>Academic Information: Exam results, test scores, answer sheets, and performance analytics.</li>
+
+          {/* 1. Information We Collect */}
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <FaDatabase className="text-orange-500 text-xl" />
+              <h2 className="text-2xl font-bold">1. Information We Collect</h2>
+            </div>
+            <p className="text-gray-500 mb-4 leading-relaxed">
+              We collect information to ensure the proper functioning of Intelli Assess and to provide a secure exam environment. This includes:
+            </p>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-gray-600">
+                <span className="text-orange-500 mt-1">•</span>
+                <span><strong>Personal Information:</strong> Name, email, phone number, username, password, school/organization details.</span>
+              </li>
+              <li className="flex items-start gap-3 text-gray-600">
+                <span className="text-orange-500 mt-1">•</span>
+                <span><strong>Academic Information:</strong> Exam results, test scores, answer sheets, and performance analytics.</span>
+              </li>
             </ul>
           </div>
-          <div className="p-2">
-            <h3 className=' font-semibold'>2. How We Use Your Information</h3>
-            <ul>
-              <li className='ml-6 text-justify list-disc'>Providing and managing your online exams.</li>
-              <li className='ml-6 text-justify list-disc'>Verifying user identity during exams.</li>
-              <li className='ml-6 text-justify list-disc'>Tracking performance and generating results.</li>
-              <li className='ml-6 text-justify list-disc'>Sending notifications, updates, or important information related to exams.</li>
-              <li className='ml-6 text-justify list-disc'>Improving system functionality, security, and user experience.</li>
+
+          {/* 2. How We Use Your Information */}
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <FaShieldAlt className="text-orange-500 text-xl" />
+              <h2 className="text-2xl font-bold">2. How We Use Your Information</h2>
+            </div>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                "Managing online exams",
+                "Verifying user identity",
+                "Tracking performance results",
+                "Sending system notifications",
+                "Improving system functionality",
+                "Ensuring platform security"
+              ].map((item, index) => (
+                <li key={index} className="flex items-center gap-3 bg-gray-50 p-3 rounded-sm border border-gray-100 text-sm text-gray-600">
+                  <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="p-2">
-            <h3 className=' font-semibold'>3. Cookies and Tracking</h3>
-            <ul>
-              <li className='ml-6 text-justify list-disc'>Maintain user sessions.</li>
-              <li className='ml-6 text-justify list-disc'>Analyze usage patterns and improve platform performance.</li>
-              <li className='ml-6 text-justify list-disc'>Personalize content and notifications.</li>
+
+          {/* 3. Cookies and Tracking */}
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <FaCookieBite className="text-orange-500 text-xl" />
+              <h2 className="text-2xl font-bold">3. Cookies and Tracking</h2>
+            </div>
+            <p className="text-gray-500 mb-4 text-sm">We use cookies to enhance your experience:</p>
+            <ul className="space-y-2 text-sm text-gray-600 ml-5 list-disc">
+              <li>Maintain secure user sessions.</li>
+              <li>Analyze usage patterns and improve platform performance.</li>
+              <li>Personalize content and dashboard notifications.</li>
             </ul>
           </div>
-          <div className="p-2">
-            <h3 className=' font-semibold'>4. Data Security</h3>
-            <p className=' text-justify'>We implement strict technical and administrative measures to secure user data, including encryption and secure authentication. Only authorized personnel can access personal and academic information.</p>
+
+          {/* 4. Data Security */}
+          <div className="bg-orange-50 p-8 rounded-lg border border-orange-100">
+            <div className="flex items-center gap-3 mb-4">
+              <FaUserLock className="text-orange-600 text-xl" />
+              <h2 className="text-2xl font-bold text-orange-900">4. Data Security</h2>
+            </div>
+            <p className="text-orange-800/80 leading-relaxed text-sm">
+              We implement strict technical and administrative measures to secure user data, including end-to-end encryption and secure multi-factor authentication. Only authorized personnel can access personal and academic information.
+            </p>
           </div>
+
         </div>
-        <Footer />
-      </div>
-    </>
+      </section>
+
+      <Footer />
+    </div>
   )
 }
 

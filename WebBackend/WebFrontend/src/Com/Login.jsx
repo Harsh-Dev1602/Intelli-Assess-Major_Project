@@ -1,40 +1,44 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useForm } from "react-hook-form"
-import toast from 'react-hot-toast'
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useAuth } from "../Context/AuthProvider.jsx";
 
-
 function Login() {
-        const [authUser, setAuthUser] = useAuth();
+    const [authUser, setAuthUser] = useAuth();
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
         reset,
         formState: { errors, isSubmitSuccessful },
-    } = useForm()
+    } = useForm();
 
-    const onSubmit = (data) => {
-            const userInfo = {
-      email: data.email,
-      password: data.pass,
+    const onSubmit = async (data) => {
+        const userInfo = {
+            email: data.email,
+            password: data.pass,
+        };
+
+        try {
+            const response = await axios.post("/oes-api/user/login", userInfo);
+            if (response.data) {
+                toast.success("Welcome back!");
+                sessionStorage.setItem("Online_Exam", JSON.stringify(response.data));
+                setAuthUser(response.data);
+                navigate("/"); // Redirect to home/dashboard
+            }
+        } catch (error) {
+            if (error.response) {
+                toast.error("Error: " + error.response.data.error);
+            } else {
+                toast.error("Invalid credentials or server error.");
+            }
+        }
     };
-    // console.log(userInfo);
-    axios.post("/oes-api/user/login", userInfo)
-      .then((response) => {
-        if (response.data) {
-          toast.success("Login successfully");
-        }
-        sessionStorage.setItem("Online_Exam", JSON.stringify(response.data));
-        setAuthUser(response.data);
-      })
-      .catch((error) => {
-        if (error.response) {
-          toast.error("Error: " + error.response.data.error);
-        }
-      });
-    }
+
     React.useEffect(() => {
         if (isSubmitSuccessful) {
             reset();
@@ -42,39 +46,59 @@ function Login() {
     }, [isSubmitSuccessful, reset]);
 
     return (
-        <>
-            <div style={{ minHeight: "calc( 100vh - 60px )" }} className="animate__animated animate__flipInY w-full flex  justify-center items-center">
-                <div  style={{ maxHeight: "calc( 100vh - 60px )" }} className="max-w-md w-full bg-white Box_Shedow rounded-xl Custom_Scroll overflow-y-auto p-5 space-y-2">
-                    <h2 className='Text_Color font-bold text-center'>Welcome Back</h2>
-                    <p style={{ animation: 'appear 3s ease-out' }} className="text-center text-gray-800">
-                        Log in to continue your account
-                    </p>
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                        <div className="relative">
-                            <input  {...register("email", { required: true })} placeholder="Email address" className="peer h-10 w-full border-b-2 border-gray-300 bg-transparent placeholder-transparent focus:outline-none focus:border-purple-500" name="email" type="email" />
-                            <label className="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-purple-500 peer-focus:text-sm" >Email address</label>
-                            {errors.email && <span className=' text-red-600 font-semibold'>This field is required</span>}
-                        </div>
-                        <div className="relative">
-                            <input  {...register("pass", { required: true })} placeholder="Password" className="peer h-10 w-full border-b-2 border-gray-300 bg-transparent placeholder-transparent focus:outline-none focus:border-purple-500" name="pass" type="password" />
-                            <label className="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-purple-500 peer-focus:text-sm" >Password</label>
-                            {errors.pass && <span className=' text-red-600 font-semibold'>This field is required</span>}
-                        </div>
+        <div style={{minHeight:"calc(100vh - 82px)"}} className=" flex items-center justify-center font-sans">
+            <div style={{maxHeight:"calc(100vh - 82px)"}} className="max-w-md w-full bg-white p-10 rounded-lg shadow-xl border border-gray-100">
+                
+                {/* --- HEADER --- */}
+                <div className="text-center mb-10">
+                    <h2 className="text-[#002347] text-3xl font-extrabold mb-3">Welcome Back</h2>
+                    <p className="text-gray-500 text-sm">Log in to your account to continue.</p>
+                </div>
 
-                        <button className="w-full py-2 px-4 BG_Color rounded-xl shadow-lg text-white font-semibold cursor-pointer transition duration-200" type="submit">
-                            Log In
-                        </button>
-                    </form>
-                    <div className="text-center mt-2">
-                        <Link to="/signup" className=" text-gray-900">
-                             Don't have an account?
-                            <span className="text-indigo-600 pl-1 font-bold hover:underline cursor-pointer">Sign up</span>
-                        </Link>
+                {/* --- FORM --- */}
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                    <div>
+                        <label className="block text-[#002347] text-xs font-bold uppercase tracking-wider mb-2">Email Address</label>
+                        <input 
+                            {...register("email", { required: "Email is required" })} 
+                            type="email" 
+                            placeholder="email@example.com"
+                            className={`w-full p-3 bg-gray-50 border ${errors.email ? 'border-red-500' : 'border-gray-200'} rounded-sm focus:outline-none focus:border-orange-400 text-sm transition-all`}
+                        />
+                        {errors.email && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.email.message}</p>}
                     </div>
+
+                    <div>
+                        <div className="flex justify-between items-center mb-2">
+                            <label className="block text-[#002347] text-xs font-bold uppercase tracking-wider">Password</label>
+                        </div>
+                        <input 
+                            {...register("pass", { required: "Password is required" })} 
+                            type="password" 
+                            placeholder="••••••••"
+                            className={`w-full p-3 bg-gray-50 border ${errors.pass ? 'border-red-500' : 'border-gray-200'} rounded-sm focus:outline-none focus:border-orange-400 text-sm transition-all`}
+                        />
+                        {errors.pass && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.pass.message}</p>}
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        className="w-full bg-gradient-to-r from-orange-500 to-yellow-400 text-white font-bold py-4 rounded-sm uppercase text-xs tracking-widest hover:shadow-lg transition-all active:scale-95 mt-4"
+                    >
+                        Log In
+                    </button>
+                </form>
+
+                {/* --- FOOTER --- */}
+                <div className="text-center pt-6 border-t border-gray-100">
+                    <p className="text-gray-500 text-sm">
+                        Don't have an account? 
+                        <Link to="/signup" className="text-orange-500 font-bold ml-1 hover:underline">Sign up now</Link>
+                    </p>
                 </div>
             </div>
-        </>
-    )
+        </div>
+    );
 }
 
-export default Login
+export default Login;

@@ -1,30 +1,49 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from "../Context/AuthProvider";
 import UserMenu from './UserMenu';
 import logo from '../../public/Logo_Img.png'
 
 function Navbar() {
-    const [authUser, setAuthUser] = useAuth();
+    const [authUser] = useAuth();
 
     return (
-        <>
-            <div className=" w-full mx-auto h-15 py-1 md:px-20 px-2 rounded-b-xl  bg-white flex justify-between Box_Shedow items-center ">
-                <Link to="/" className='flex justify-center items-center'>
-                    <img src={logo} className='w-5 min-[375px]:w-10'/>
-                    <h2 className=' Text_Color font-bold'>Intelli Assess</h2>
+        <nav className="w-full sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+            <div className="max-w-7xl mx-auto px-6 lg:px-0 h-20 flex justify-between items-center">
+                
+                {/* --- LOGO --- */}
+                <Link to="/" className="flex items-center gap-2 group">
+                    <img src={logo} alt="Logo" className="w-8 md:w-10 group-hover:rotate-12 transition-transform duration-300" />
+                    <h2 className="text-[#002347] text-xl font-extrabold tracking-tight">
+                        intelli<span className="text-orange-500">assess.</span>
+                    </h2>
                 </Link>
 
-                <div className={`${authUser ? "hidden" : " "} font-bold rounded-xl  flex gap-2`}>
-                    <Link to="/login" className='BG_Color  text-white cursor-pointer rounded-xl p-1 '>Log In</Link>
-                    <Link to="/signup" className='Text_Color  border-2 border-[#4f39f6] cursor-pointer  rounded-xl p-1 '>Sign Up</Link>
-                </div>
+                
 
-                <div className={`${authUser ? "block" : "hidden"}`}>
-                    <UserMenu />
+                {/* --- AUTH BUTTONS --- */}
+                <div className="flex items-center gap-4">
+                    {!authUser ? (
+                        <>
+                            <Link 
+                                to="/login" 
+                                className=" text-[#002347] font-bold text-sm hover:text-orange-500 transition"
+                            >
+                                Log in
+                            </Link>
+                            <Link 
+                                to="/signup" 
+                                className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white text-xs md:text-sm font-bold py-2.5 px-6 rounded-full shadow-md hover:shadow-orange-200 hover:-translate-y-0.5 transition-all active:scale-95"
+                            >
+                                Sign up
+                            </Link>
+                        </>
+                    ) : (
+                        <UserMenu />
+                    )}
                 </div>
             </div>
-        </>
+        </nav>
     )
 }
 

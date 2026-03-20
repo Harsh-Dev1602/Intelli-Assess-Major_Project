@@ -1,12 +1,15 @@
 import React from 'react'
 import Footer from './Footer'
-import Img4 from '../../public/Bg_Img/Bg_Img4.jpg'
+import { FaCheckCircle, FaCode, FaServer, FaShieldAlt, FaUserTie } from 'react-icons/fa'
+
+// Assuming your assets are in these paths
+import Img4 from '../../public/Bg_Img/Bg_Img4.jpg' 
 import Img6 from '../../public/Bg_Img/Bg_Img6.jpg'
 
 function About() {
   const team = [
     {
-      name: " Jatin Rao",
+      name: "Jatin Rao",
       role: "Project Leader",
       desc: "Led the entire Intelli Assess project, managing design, backend, and deployment.",
     },
@@ -26,69 +29,102 @@ function About() {
       desc: "Handled system testing, debugging, and project documentation."
     },
   ];
+
+  const features = [
+    "Flexible question types (MCQ, Coding, Essay)",
+    "Automated grading + manual review workflows",
+    "Timed exams & late-penalty rules",
+    "Secure access & SSO support",
+    "Proctoring & automated behavior flags",
+    "Real-time analytics dashboards"
+  ];
+
   return (
-    <>
-      <div style={{ height: "calc( 100vh - 60px )" }}  className="w-full overflow-y-auto Custom_Scroll">
-        <div className=' my-5  text-black flex justify-evenly flex-col lg:flex-row items-center gap-5 lg:gap-10'>
-          <img src={Img4} className='Box_Shedow order-2 rounded-xl w-70 lg:w-100' />
-          <div className="lg:w-1/2 text-center  rounded-xl p-5 lg:order-2 ">
-            <h1 className=' font-bold text-indigo-500'>About Intelli Assess</h1>
-            <h3 className='font-medium text-gray-500'>Smart, Secure, Scalable Online Examinations</h3>
-            <p className=' text-justify'>Intelli Assess is an end-to-end online examination platform designed to simplify and secure the entire assessment lifecycle. From question creation and proctored live exams to instant grading and analytics, Intelli Assess helps educators and administrators create fair, flexible, and data-driven evaluations — saving time while improving assessment quality.</p>
-          </div>
+    <div className="bg-white font-sans text-[#002347]">
+      {/* --- SECTION 1: ABOUT HERO --- */}
+      <section className="py-16 lg:py-24 px-6 lg:px-20 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+        <div className="lg:w-1/2 relative">
+          <img src={Img4} alt="About" className="rounded-lg shadow-2xl relative z-10" />
+          <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-orange-100 rounded-lg -z-0"></div>
         </div>
-        <div className="text-black p-5 text-justify rounded-xl  my-5">
-          <ul>
-            <li className=' list-disc ml-5'>Intelli Assess was built to address common challenges in digital assessment: integrity, scalability, and meaningful feedback. Our platform supports flexible question types (MCQ, descriptive, coding, image-based), timed and scheduled exams, role-based access for admins/invigilators/candidates, and multiple proctoring options to maintain exam integrity.</li>
-            <li className=' list-disc ml-5'>We combine automated scoring for objective items with tools for efficient manual review of subjective answers. Powerful reporting and dashboards provide real-time insights on performance trends, item analysis, and candidate progress — helping instructors refine content and make decisions backed by data.</li>
-            <li className=' list-disc ml-5'>Security and fairness are central: secure authentication, randomized questions/answers, browser lockdown options, and audit logs reduce cheating risk while preserving candidate privacy.</li>
-          </ul>
-        </div>
-
-        <div className="text-black p-1 text-justify flex flex-col lg:flex-row justify-evenly rounded-xl my-2">
-          <h1 className=' rounded-xl p-1 flex justify-center items-center h-20 font-semibold text-indigo-500'>Key feature</h1>
-          <ul className=' rounded-xl p-5'>
-            <li className=' list-disc ml-5'>Flexible question types: MCQ, short answer, essay, coding, image/audio questions.</li>
-            <li className=' list-disc ml-5'>Automated grading + manual review workflows.</li>
-            <li className=' list-disc ml-5'>Timed exams, late-penalty rules, and multiple scheduling options.</li>
-            <li className=' list-disc ml-5'>Secure access: role-based permissions, SSO / OAuth support, and audit trails.</li>
-            <li className=' list-disc ml-5'>Proctoring options: live proctoring, recorded sessions, and automated behavior flags.</li>
-            <li className=' list-disc ml-5'>Randomization & question pools to minimize collusion.</li>
-            <li className=' list-disc ml-5'>Real-time dashboards: candidate progress, item difficulty, and grade distributions.</li>
-            <li className=' list-disc ml-5'>Exportable reports: CSV/PDF, API access for LMS integration.</li>
-            <li className=' list-disc ml-5'>Mobile-first responsive UI and offline-safe question delivery </li>
-            <li className=' list-disc ml-5'>Accessibility compliance: keyboard navigation, screen-reader friendly layouts.</li>
-          </ul>
-        </div>
-        <div className="flex justify-evenly flex-col lg:flex-row items-center gap-5 lg:gap-20 my-1">
-          <div className=' lg:w-1/2 text-center rounded-xl p-10 text-black'>
-            <h1 className='font-semibold text-indigo-500'>Technology & security</h1>
-            <p className='text-justify'>Intelli Assess is built with modern, scalable web technologies and follows security best practices: encrypted data in transit and at rest, secure authentication, and comprehensive logging. APIs allow integration with popular LMS and HR systems.</p>
-          </div>
-          <div className="lg:w-1/2 flex justify-center items-center">
-          <img src={Img6} className='w-70 rounded-xl Box_Shedow rotate-3' />
-          </div>
-        </div>
-
-        <div className=" rounded-xl py-5 text-center">
-          <h2 className=" font-bold rounded-xl py-2 mb-5 text-indigo-500">
-            Meet Our Development Team
+        
+        <div className="lg:w-1/2">
+          <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">Our Mission</span>
+          <h2 className="text-4xl lg:text-5xl font-extrabold mt-3 mb-6 leading-tight">
+            Smart, Secure, Scalable <br/> Online Examinations
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 p-1">
-            {team.map((member, index) => (
-              <div key={index} className="bg-white Box_Shedow rounded-xl p-2">
-                <h3 className="text-xl font-bold Text_Color">
-                  {member.name}
-                </h3>
-                <p className="text-gray-600">{member.role}</p>
-                <p className="text-gray-800 mt-2 text-sm">{member.desc}</p>
+          <p className="text-gray-500 leading-relaxed mb-6">
+            Intelli Assess is an end-to-end online examination platform designed to simplify and secure the entire assessment lifecycle. From proctored live exams to instant grading, we help educators create fair and flexible evaluations.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {features.map((f, i) => (
+              <div key={i} className="flex items-center gap-2 text-sm font-semibold">
+                <FaCheckCircle className="text-orange-500" /> {f}
               </div>
             ))}
           </div>
         </div>
-        <Footer />
-      </div>
-    </>
+      </section>
+
+      {/* --- SECTION 2: TECHNOLOGY & SECURITY --- */}
+      <section className="bg-gray-50 py-20 px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-16">
+          <div className="lg:w-1/2 flex justify-center">
+            <div className="relative">
+              <img src={Img6} className="w-80 h-80 object-cover rounded-full border-8 border-white shadow-xl" alt="Technology" />
+              <div className="absolute top-0 right-0 bg-gradient-to-r from-orange-500 to-yellow-400 p-4 rounded-full text-white shadow-lg">
+                <FaShieldAlt size={30} />
+              </div>
+            </div>
+          </div>
+          
+          <div className="lg:w-1/2">
+            <h2 className="text-3xl font-bold mb-6">Technology & Security</h2>
+            <p className="text-gray-500 mb-8 leading-relaxed">
+              Built with modern, scalable web technologies, Intelli Assess follows security best practices: encrypted data in transit and at rest, secure authentication, and comprehensive logging. Our APIs allow seamless integration with popular LMS and HR systems.
+            </p>
+            <div className="flex gap-8">
+              <div className="text-center">
+                <div className="text-orange-500 text-3xl font-bold">100%</div>
+                <div className="text-xs uppercase font-bold text-gray-400">Secure</div>
+              </div>
+              <div className="text-center">
+                <div className="text-orange-500 text-3xl font-bold">99.9%</div>
+                <div className="text-xs uppercase font-bold text-gray-400">Uptime</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SECTION 3: TEAM --- */}
+      <section className="py-24 px-6 lg:px-20 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-orange-500 font-bold uppercase text-xs tracking-widest">Experts</span>
+          <h2 className="text-4xl font-bold mt-2 relative inline-block">
+            Meet Our Developers
+            <div className="w-12 h-1 bg-orange-500 mx-auto mt-2"></div>
+          </h2>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {team.map((member, index) => (
+            <div key={index} className="group bg-white border border-gray-100 p-8 rounded-xl hover:shadow-2xl transition-all duration-300 text-center">
+              <div className="w-20 h-20 bg-orange-50 text-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                <FaUserTie size={32} />
+              </div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-orange-500 transition-colors">
+                {member.name}
+              </h3>
+              <p className="text-orange-500 text-xs font-bold uppercase mb-4 tracking-tighter">{member.role}</p>
+              <p className="text-gray-500 text-sm leading-snug">{member.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Footer />
+    </div>
   )
 }
 

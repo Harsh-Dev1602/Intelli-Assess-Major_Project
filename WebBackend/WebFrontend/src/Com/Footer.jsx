@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { BsYoutube } from "react-icons/bs";
-import { FaSquareFacebook } from "react-icons/fa6";
-import { FaSquareInstagram } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
+import { BsTwitter } from "react-icons/bs";
+import { FaFacebookF, FaInstagram, FaGithub, FaPaperPlane } from "react-icons/fa";
+import logo from '../../public/Logo_Img.png'
 
 function Footer() {
 
-    const NavText = [
+    
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+     const NavText = [
         {
             id: 0,
             text: "Home",
@@ -24,61 +27,80 @@ function Footer() {
 
         }, {
             id: 3,
-            text: "Privacy Policy",
+            text: "Privacy policy",
             link: "/privacy-policy"
 
         }
     ]
-    const Icon = [
-        {
-            id: 0,
-            icon: <FaGithub />,
-            link: "https://github.com/Harsh-Dev1602/Intelli-Assess-Major_Project"
-        },
-        {
-            id: 1,
-            icon: <FaSquareFacebook />,
-            link: "https://www.facebook.com/"
-        },
-        {
-            id: 2,
-            icon: <FaSquareInstagram />,
-            link: "https://www.instagram.com/"
-        },
-        {
-            id: 3,
-            icon: <BsYoutube />,
-            link: "https://www.youtube.com/"
-        },
-    ]
     return (
-        <>
-            <div className="w-full rounded-t-xl h-120 lg:h-80 font-bold mt-2 flex flex-col lg:flex-row justify-evenly items-center bg-gray-950 ">
-                <ul className='flex flex-col w-[80%] lg:w-auto items-center lg:items-start justify-center p-1 lg:px-15'>
-                    {
-                        NavText.map(({ id, text, link }) => (
-                            <Link to={link} key={id} className='text-white hover:text-indigo-200 hover:underline transition-all duration-500 font-bold hover:bg-[#cccccc1c]  rounded-xl cursor-pointer py-1 px-5'>{text}</Link>
-                        ))
-                    }
-                </ul>
-                <div className='lg:w-1/2 p-5'>
-                    <div className="w-full max-w-70 mx-auto Box_Shedow p-2 rounded-xl flex justify-center items-center flex-col gap-2 bg-white mb-10">
-                        <h3 className="Text_Color ">FOLLOW US</h3>
-                        <ul className=" flex  justify-center items-center gap-5">
-                            {
-                                Icon.map(({ id, icon, link }) => (
-                                    <Link to={link} key={id} target="_blank"
-                                        rel="noopener noreferrer" className="text-black bg-white cursor-pointer duration-200 hover:bg-[#0000002b] border-2 rounded-xl p-2 text-2xl">{icon}
-                                    </Link>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                    <div className="w-full text-white text-center">© {new Date().getFullYear()} Intelli Assess, <span className='px-2'>All Rights Reserved.</span>  <br />             Empowering education through smart, secure, and scalable online assessments.
+        <footer className="w-full bg-[#f8f9fa] pt-20 pb-10 px-6 lg:px-20 border-t border-gray-100">
+            <div className=" mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24 mb-16">
+                
+                <div className="flex flex-col gap-6">
+                    <Link to="/" className="flex items-center gap-2">
+                        <img src={logo} alt="Logo" className="w-8" />
+                        <h2 className="text-[#002347] text-2xl font-extrabold">intelli<span className="text-orange-500">assess.</span></h2>
+                    </Link>
+                    <p className="text-gray-500 text-sm leading-relaxed">
+                        But when shot real her, Chamber her one make removal six sending himself boys sect corporate car sold un. <br/><br/>
+                        But when shot real her her her.
+                    </p>
+                    <div className="flex gap-4">
+                        {[
+                            { icon: <FaFacebookF />, link: "#" },
+                            { icon: <BsTwitter />, link: "#" },
+                            { icon: <FaInstagram />, link: "#" },
+                            { icon: <FaGithub />, link: "#" },
+                        ].map((social, idx) => (
+                            <a key={idx} href={social.link} className="text-gray-400 hover:text-orange-500 transition-colors text-sm">
+                                {social.icon}
+                            </a>
+                        ))}
                     </div>
                 </div>
+
+                {/* --- COLUMN 2: NEWSLETTER --- */}
+                <div>
+                    <h3 className="text-[#002347] text-xl font-bold mb-8">Newsletter</h3>
+                    <p className="text-gray-500 text-sm mb-6">Stay updated with our latest trends. Seed heaven so said place winged over given forth fruit.</p>
+                    <div className="relative flex items-center">
+                        <input 
+                            type="email" 
+                            placeholder="Enter email address" 
+                            className="w-full bg-white border border-gray-200 py-3 px-4 rounded-sm focus:outline-none focus:border-orange-400 text-sm"
+                        />
+                        <button className="absolute right-0 top-0 h-full bg-gradient-to-r from-orange-500 to-yellow-400 text-white px-5 rounded-r-sm hover:opacity-90 transition">
+                            <FaPaperPlane size={14}/>
+                        </button>
+                    </div>
+                </div>
+
+                {/* --- COLUMN 3: CONTACT --- */}
+                <div>
+                    <h3 className="text-[#002347] text-xl font-bold mb-8">Contact us</h3>
+                    <div className="flex flex-col gap-4 text-sm text-gray-500">
+                        <p><span className="text-[#002347] font-semibold block">Address :</span> Indore (M.P.)</p>
+                        <p><span className="text-[#002347] font-semibold block">Phone :</span> +2 35 245 (3333)</p>
+                        <p><span className="text-[#002347] font-semibold block">Email :</span> info@intelli-assess.in</p>
+                    </div>
+                </div>
+
             </div>
-        </>
+
+            {/* --- BOTTOM BAR --- */}
+            <div className="max-w-7xl mx-auto pt-8 border-t border-gray-200 text-center space-y-5">
+                <div className="flex justify-center items-center gap-4">
+                        {NavText.map(({id,text,link}) => (
+                            <Link onClick={scrollTop} key={id} to={link} className="text-gray-400 hover:text-orange-500 transition-colors text-sm">
+                                {text}
+                            </Link>
+                        ))}
+                    </div>
+                <p className="text-gray-400 text-xs">
+                    Copyright ©{new Date().getFullYear()} All rights reserved
+                </p>
+            </div>
+        </footer>
     )
 }
 
